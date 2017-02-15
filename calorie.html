@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calorie Page</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <header>
+            <div class="col-sm-1">
+                <div class="wrap-header" >
+                    <div id="logo">
+                         <a href="index.html">
+                             <img src="logo.png"/>
+                         </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-sm-1">
+                <nav>
+                    <ul>
+                      <li><a class="inactive" href="index.html">Create a Recipe</a></li>
+                      <li><a class="inactive" href="recipe.html">Recipe</a></li>
+                      <li><a class="active" href="calorie.html">Calorie</a></li>
+                      <li><a class="inactive" href="listOfIngredients.html">List of Ingredients</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-11">
+                <div class="container">
+                    <p class="pageHeader">Calorie Page</p>
+                    <form class="form-horizontal">
+                            <div class="form-group"> 
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="calorieIntake" placeholder="Enter total calories">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button type="submit" class="btn btn-default" id="calorieIntakeButton">Enter</button>
+                                    </div>
+                                    <div class="col-sm-7">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h4>Total Calories: 10</h4>
+                                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </body>
+</html>

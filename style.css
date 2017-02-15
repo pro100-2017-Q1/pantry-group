@@ -1,0 +1,68 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+header {
+    background:#383838;
+    height: 150px; 
+    border-bottom:1px solid #2C2C2C;
+    
+}
+
+header #logo {
+    padding-top: 15px;
+    float: left;
+}
+
+#searchBox {
+    width: 550px;
+    height: 30px;
+    border-radius: 5px;
+    float: left;
+}
+
+#lotsOfRecipesImage{
+    width: 80%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+#searchRecipes{
+    width: 575px;
+}
+
+.pageHeader{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.container{
+    background: #bfbfbf;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 5px 5px 5px #888888;
+}
