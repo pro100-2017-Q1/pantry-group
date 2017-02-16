@@ -11,3 +11,8 @@ function addInput(divName){
           counter++;
      }
 }
+
+function incrementIngredientAmount(){
+    ingredientAmount = 0;
+    document.getElementById(buttonName).innerHTML = ingredientAmount += 1;
+}
