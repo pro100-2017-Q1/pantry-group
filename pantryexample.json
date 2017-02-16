@@ -1,0 +1,31 @@
+{
+    "ingredients": [
+        {
+            "name": "Carrot",
+            "count": 2
+        },
+        {
+            "name":"Potato",
+            "count":7
+        }
+    ],
+    "recipes": [
+        {
+            "name": "Thing",
+            "requirements": [
+                {
+                    "name":"Carrot",
+                    "count":4
+                },
+                {
+                    "name":"Broccoli",
+                    "count": 3
+                }
+            ],
+            "intructions": [
+                "Boil water",
+                "Eat"
+            ]
+        }
+    ]
+}
