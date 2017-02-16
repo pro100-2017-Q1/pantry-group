@@ -16,3 +16,33 @@ function incrementIngredientAmount(){
     ingredientAmount = 0;
     document.getElementById(buttonName).innerHTML = ingredientAmount += 1;
 }
+}
+
+var pantry = [
+    ingredients = [],
+    recipes = []
+];
+
+function Ingredient(name){
+    //String name of ingredient
+    this.name = name;
+    //Number of available units for this ingredient
+    this.count = 1;
+}
+
+function Recipe(name, requiredIngredients, instructions){
+    //String name of recipe
+    this.name = name;
+    //Array of ingredient objects with names and required amounts
+    this.requirements = requiredIngredients;
+    //array of strings
+    this.instructions = instructions;
+}
+
+function addIngredient(name){
+    pantry.ingredients.push(new Ingredient(name));
+}
+
+function addRecipe(name, requiredIngredients, instructions){
+    pantry.recipes.push(new Recipe(name, requiredIngredients, instructions));
+}
