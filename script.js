@@ -1,5 +1,6 @@
 var counter = 1;
 var limit = 100;
+
 function addInput(divName){
      if (counter == limit)  {
           alert("You have reached the limit of adding " + counter + " inputs");
@@ -16,3 +17,5 @@ function incrementIngredientAmount(){
     ingredientAmount = 0;
     document.getElementById(buttonName).innerHTML = ingredientAmount += 1;
 }
+
+

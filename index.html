@@ -39,56 +39,74 @@
                         <form class="form-horizontal">
                             <div class="form-group"> 
                                 <label class="control-label col-sm-2" for="recipeName">Recipe Name:</label>
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="recipeName" placeholder="Enter Recipe Name">
-                                    </div>
+                                    <form method="POST">
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="recipeName" placeholder="Enter Recipe Name">
+                                        </div>
+                                    </form>
                             </div>
+                        </form>
                         <form class="form-horizontal">
                             <div class="form-group"> 
                                 <label class="control-label col-sm-2" for="recipeInstructions">Recipe Instructions:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="recipeInstructions" placeholder="Enter Recipe Instructions">
-                                    </div>
+                                    <form method="POST">
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="recipeInstructions" placeholder="Enter Recipe Instructions">
+                                        </div>
+                                    </form>
                             </div>
+                        </form>
                         <form class="form-horizontal">
                             <div class="form-group"> 
                                 <label class="control-label col-sm-2" for="calorieIntake">Total Calories:</label>
-                                    <div class="col-sm-2">
-                                        <input type="number" class="form-control" id="calorieIntake" placeholder="Enter total calories">
-                                    </div>
+                                    <form method="POST">
+                                        <div class="col-sm-2">
+                                            <input type="number" class="form-control" id="calorieIntake" placeholder="Enter total calories">
+                                        </div>
+                                    </form>
                             </div>
+                        </form>
                         <form class="form-horizontal">
                             <div class="form-group"> 
                                 <label class="control-label col-sm-2" for="ingredientName">Ingredients:</label>
                                     <form method="POST">
-                                    <div class="col-sm-4" id="dynamicInput">
-                                        <input type="text" class="form-control" name="myInputs[]" id="ingredientName" placeholder="Enter ingredient name">
-                                        
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="number" class="form-control" id="ingredientNumber" placeholder="How many">
-                                    </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="myInputs[]" id="ingredientName" placeholder="Enter ingredient name">
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="number" class="form-control" id="ingredientNumber" placeholder="How many">
+                                        </div>
                                     </form>
                             </div>
                             <div class="col-sm-offset-2 col-sm-10">
                                      <input type="button" value="Add another" onClick="addInput('dynamicInput');">
                             </div>
                             <br/>
+                                
                             <br/>
-                            <div class="col-sm-2">
+                            
+                        </form>
+                        <form class="form-horizontal">
+                            <div class="form-group"> 
+                                    <label class="control-label col-sm-2" for="imageUpload">Image Upload:</label>
+                                    <div class="col-sm-5">
+                                        <img id="recipeImage" src="#"/>
+                                        <input type="file">
+                                    </div>
+                                        
                             </div>
-                            <div class="col-sm-2">
+                            
+                        </form>
+                            <div class="control-label col-sm-2">
                                 <button type="button" class="btn btn-default">Save</button>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-10">
                             </div>
                             <br/>
-                            <br/>
-                        </form>
-                            <br/>
-                            
-                            
+                            <br/>    
                 </div>
+                            
             </div>
             <div class="col-sm-2">
             </div>
