@@ -17,7 +17,6 @@ function incrementIngredientAmount(){
     document.getElementById(buttonName).innerHTML = ingredientAmount += 1;
 }
 
-
 var pantry = [
     ingredients = [],
     recipes = []
