@@ -12,16 +12,15 @@ function addInput(divName){
      }
 }
 
+var count = 0;
 function incrementIngredientAmount(){
-    ingredientAmount = 0;
-    document.getElementById("incrementIngredientButton").innerHTML = ingredientAmount ++;
+    document.getElementById("ingredientQuantity").innerHTML = count++;
 }
 
 function decrementIngredientAmount(){
-    ingredientAmount = 0;
-    document.getElementById("decrementIngredientButton").innerHTML = ingredientAmount --;
+    document.getElementById("ingredientQuantity").innerHTML = count--;
 }
-}
+
 
 var pantry = [
     ingredients = [],
