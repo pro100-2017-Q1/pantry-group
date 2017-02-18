@@ -1,5 +1,6 @@
 var counter = 1;
 var limit = 100;
+var count = 0;
 
 function addInput(divName){
      if (counter == limit)  {
@@ -13,7 +14,7 @@ function addInput(divName){
      }
 }
 
-var count = 0;
+
 function incrementIngredientAmount(){
     document.getElementById("ingredientQuantity").innerHTML = count++;
 }
