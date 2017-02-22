@@ -15,8 +15,14 @@ function addInput(divName){
 }
 
 var pantry = [
-    ingredients = [],
-    recipes = []
+    this.ingredients = [],
+    this.recipes = [],
+    this.addIngredient = function(){
+        this.ingredients.push(new Recipe(name));
+    },
+    this.addRecipe = function(){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions));
+    }
 ];
 
 function Ingredient(name){
@@ -24,6 +30,21 @@ function Ingredient(name){
     this.name = name;
     //Number of available units for this ingredient
     this.count = 1;
+
+    this.printInfo = function(){
+        console.log("Ingredient name: " + name + ", Amount available:" + count);
+    }
+}
+
+function Requirement(name, count){
+    //String name of ingredient
+    this.name = name;
+    //Number of available units for this ingredient
+    this.count = count;
+
+    this.printInfo = function(){
+        console.log("Ingredient needed: " + name + ", Amount needed:" + count);
+    }
 }
 
 function Recipe(name, requiredIngredients, instructions){
