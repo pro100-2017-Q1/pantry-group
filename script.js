@@ -45,11 +45,3 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     
     this.recipeImage = recipeImage;
 }
-
-function addIngredient(name){
-    pantry.ingredients.push(new Ingredient(name));
-}
-
-function addRecipe(name, requiredIngredients, instructions, totalCalories){
-    pantry.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));
-}
