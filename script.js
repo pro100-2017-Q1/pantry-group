@@ -1,15 +1,17 @@
-var count = 0;
-
 var pantry = [
     this.ingredients = [],
-    this.recipes = [],
     this.addIngredient = function(){
         this.ingredients.push(new Recipe(name));
-    },
+    }
+    
+];
+
+var recipesList = [
+    this.recipes = [],
     this.addRecipe = function(){
         this.recipes.push(new Recipe(name, requiredIngredients, instructions));
     }
-];
+]
 
 function Ingredient(name){
     //String name of ingredient
@@ -44,4 +46,13 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     this.totalCalories = Calories;
     
     this.recipeImage = recipeImage;
+}
+
+function printUserInput(){
+    var recipeName = document.getElementById('recipeName').value;
+    var recipeInstructions = document.getElementById('recipeInstructions').value;
+    var totalCalories = document.getElementById('calorieIntake').value;
+    var ingredientName = document.getElementById('ingredientName').value;
+    var ingredientNumber = document.getElementById('ingredientNumber').value;
+    console.log(recipeName + " " + recipeInstructions + " " + totalCalories + " "+ ingredientName + " " + ingredientNumber);
 }
