@@ -1,15 +1,17 @@
-var count = 0;
-
 var pantry = [
     this.ingredients = [],
-    this.recipes = [],
     this.addIngredient = function(){
         this.ingredients.push(new Recipe(name));
-    },
+    }
+    
+];
+
+var recipesList = [
+    this.recipes = [],
     this.addRecipe = function(){
         this.recipes.push(new Recipe(name, requiredIngredients, instructions));
     }
-];
+]
 
 function Ingredient(name){
     //String name of ingredient
