@@ -13,6 +13,10 @@ var recipesList = [
     }
 ]
 
+function handleIngredientAddClick(form){
+    console.log("Add button clicked");
+}
+
 function Ingredient(name){
     //String name of ingredient
     this.name = name;
