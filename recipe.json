@@ -1,0 +1,19 @@
+  { "Recipe":[
+                {
+                    "name": "Cheeseburger",
+                    "image": "./images/burger2",
+                    "instructions": "Instructions Here!",
+                    "calories": 10,
+                     "ingredients":[
+                        {
+                            "ingredientName":"Meat",
+                            "quantiy":1
+                        },
+                        {
+                            "ingredientName":"cheese",
+                             "quantiy":1
+                        }                  
+                    ]
+                }
+        ]
+    }
