@@ -2,6 +2,7 @@ var counter = 1;
 var limit = 100;
 var count = 0;
 
+
 function addInput(divName){
      if (counter == limit)  {
           alert("You have reached the limit of adding " + counter + " inputs");
