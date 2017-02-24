@@ -8,8 +8,10 @@ var pantry = [
 
 var recipesList = [
     this.recipes = [],
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    }
-]
+    this.addRecipe = function(){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
+    }
+];
 
 function handleIngredientAddClick(form){
     console.log(form.ingredientAdded.value);
