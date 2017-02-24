@@ -1,0 +1,1 @@
+This is Adam. I talked with jesus and Alex about adding removing objs to the array and localstorage.
