@@ -1,20 +1,23 @@
 var pantry = [
     this.ingredients = [],
-    this.addIngredient = function(){
+    this.addIngredient = function(name){
         this.ingredients.push(new Recipe(name));
+        console.log(name + "Added");
     }
-    
 ];
 
 var recipesList = [
     this.recipes = [],
     this.addRecipe = function(){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));
     }
 ]
 
 function handleIngredientAddClick(form){
-    console.log("Add button clicked");
+    console.log(form.ingredientAdded.value);
+    //pantry.addIngredient(form.ingredientAdded.value);
+    console.log(pantry);
+    console.log(pantry.addIngredient);
 }
 
 function Ingredient(name){
