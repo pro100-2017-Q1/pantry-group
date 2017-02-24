@@ -8,8 +8,8 @@ var pantry = [
 
 var recipesList = [
     this.recipes = [],
-    this.addRecipe = function(){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));
+    this.addRecipe = function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));
     }
 ]
 
@@ -43,11 +43,11 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     //String name of recipe
     this.name = name;
     //Array of ingredient objects with names and required amounts
-    this.requirements = requiredIngredients;
+    this.requiredIngredients = requiredIngredients;
     //array of strings
     this.instructions = instructions;
     
-    this.totalCalories = Calories;
+    this.totalCalories = totalCalories;
     
     this.recipeImage = recipeImage;
 }
