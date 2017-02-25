@@ -6,12 +6,12 @@ var pantry = [
     }
 ];
 
-var recipesList = [
-    this.recipes = [],
-    this.addRecipe = function(){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
-    }
-];
+//var recipesList = [
+//    this.recipes = [],
+//    this.addRecipe = function(){
+//        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
+//    }
+//];
 
 function handleIngredientAddClick(form){
     console.log(form.ingredientAdded.value);
@@ -45,12 +45,19 @@ function Requirement(name, count){
 function Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage){
     //String name of recipe
     this.name = name;
+    
+    this.name = document.getElementById('recipeName').value;
     //Array of ingredient objects with names and required amounts
     this.requiredIngredients = requiredIngredients;
+    
+    this.requiredIngredients = document.getElementById('recipeIngredients').value
     //array of strings
     this.instructions = instructions;
+    this.instructions = document.getElementById('')
     
     this.totalCalories = totalCalories;
+    
+    this.totalCalories = document.getElementById('calorieIntake').value
     
     this.recipeImage = recipeImage;
 }
@@ -59,7 +66,13 @@ function printUserInput(){
     var recipeName = document.getElementById('recipeName').value;
     var recipeInstructions = document.getElementById('recipeInstructions').value;
     var totalCalories = document.getElementById('calorieIntake').value;
-    var ingredientName = document.getElementById('ingredientName').value;
+    var ingredientName = document.getElementsByClassName('form-control myIngredientsNames');
     var ingredientNumber = document.getElementById('ingredientNumber').value;
-    console.log(recipeName + " " + recipeInstructions + " " + totalCalories + " "+ ingredientName + " " + ingredientNumber);
+    console.log(recipeName + " " + recipeInstructions + " " + totalCalories + " " + " " + ingredientNumber);
+    for (var i=0; i < ingredientName.length; i++){
+        var newIngredientList = ingredientName[i];
+        console.log(newIngredientList);
+    }
+    //going to use JQuery to grab all ingredientName values and ingredient number values
+    
 }
