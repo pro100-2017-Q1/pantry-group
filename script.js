@@ -13,6 +13,12 @@ var pantry = [
 //    }
 //];
 
+function handleRecipeSaveClick(form){
+    console.log(form.recipeName.value);
+    console.log(recipesList);
+    console.log(recipesList.addRecipe);
+}
+
 function handleIngredientAddClick(form){
     console.log(form.ingredientAdded.value);
     //pantry.addIngredient(form.ingredientAdded.value);
