@@ -1,23 +1,23 @@
-var pantry = [
-    this.ingredients = [],
-    this.addIngredient = function(name){
-        this.ingredients.push(new Recipe(name));
+var pantry = {
+    ingredients : [],
+    addIngredient : function(name){
+        this.ingredients.push(new Ingredient(name));
         console.log(name + "Added");
     }
-];
+};
 
-var recipesList = [
-    this.recipes = [],
-    this.addRecipe = function(){
+var recipesList = {
+    recipes : [],
+    addRecipe : function(){
         this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
     }
-];
+};
 
-function handleIngredientAddClick(form){
-    console.log(form.ingredientAdded.value);
-    //pantry.addIngredient(form.ingredientAdded.value);
+function handleIngredientAddClick(){
+    var name = document.getElementById('ingredientAdded').value;
+    console.log(name);
+    pantry.addIngredient(name);
     console.log(pantry);
-    console.log(pantry.addIngredient);
 }
 
 function Ingredient(name){
