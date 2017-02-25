@@ -8,10 +8,16 @@ var pantry = [
 
 var recipesList = [
     this.recipes = [],
-    this.addRecipe = function(){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
+    this.addRecipe = function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));    
     }
 ];
+
+function handleRecipeSaveClick(form){
+    console.log(form.recipeName.value);
+    console.log(recipesList);
+    console.log(recipesList.addRecipe);
+}
 
 function handleIngredientAddClick(form){
     console.log(form.ingredientAdded.value);
