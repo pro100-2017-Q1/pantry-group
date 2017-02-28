@@ -1,0 +1,4 @@
+This is Adam. I talked with jesus and Alex about adding removing objs to the array and localstorage.
+
+2/27/2017
+Today, I read an article about savings images and files using localStorage and am getting ready to implement that into our project so that we can store data entered by the user to add recipes.
