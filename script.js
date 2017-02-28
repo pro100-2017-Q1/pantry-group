@@ -94,3 +94,4 @@ function printUserInput(){
     //going to use JQuery to grab all ingredientName values and ingredient number values
     
 }
+}
