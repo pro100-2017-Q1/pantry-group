@@ -8,29 +8,20 @@ var pantry = {
 
 };
 
-
-//var recipesList = [
-//    this.recipes = [],
-//    this.addRecipe = function(){
-//        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
-//    }
-//];
 var recipesList = {
     recipes : [],
-    addRecipe : function(){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
+    addRecipe : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));    
     }
 };
 
-function handleRecipeSaveClick(form){
-    console.log(form.recipeName.value);
+function handleRecipeSaveClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    recipesList.addRecipe(recipeName);
     console.log(recipesList);
-    console.log(recipesList.addRecipe);
 }
 
-function handleIngredientAddClick(form){
-    console.log(form.ingredientAdded.value);
-    //pantry.addIngredient(form.ingredientAdded.value);
 function handleIngredientAddClick(){
     var name = document.getElementById('ingredientAdded').value;
     console.log(name);
@@ -68,7 +59,7 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     //Array of ingredient objects with names and required amounts
     this.requiredIngredients = requiredIngredients;
     
-    this.requiredIngredients = document.getElementById('recipeIngredients').value
+    this.requiredIngredients = document.getElementById('ingredientName').value
     //array of strings
     this.instructions = instructions;
     this.instructions = document.getElementById('')
