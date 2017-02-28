@@ -70,7 +70,7 @@
                                 <label class="control-label col-sm-2" for="ingredientName">Ingredients:</label>
                                     <form method="POST">
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control myIngredientsNames" id="ingredientName" placeholder="Enter ingredient name">
+                                            <input type="text" class="form-control" name="myInputs[]" id="ingredientName" placeholder="Enter ingredient name">
 
                                         </div>
                                         <div class="col-sm-2">
@@ -104,7 +104,7 @@
                             <div class="col-sm-2">
                             </div>
                             <div class="control-label col-sm-2">
-                                <button type="button" class="btn btn-default" onclick="printUserInput();">Save</button>
+                                <button type="button" class="btn btn-default" onclick="handleRecipeSaveClick()">Save</button>
                             </div>
                             <div class="col-sm-7">
                             </div>
