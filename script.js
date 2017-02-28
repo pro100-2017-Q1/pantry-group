@@ -9,16 +9,10 @@ var pantry = {
 };
 
 
-//var recipesList = [
-//    this.recipes = [],
-//    this.addRecipe = function(){
-//        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
-//    }
-//];
 var recipesList = {
     recipes : [],
-    addRecipe : function(){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions));    
+    addRecipe : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));    
     }
 };
 
@@ -28,14 +22,23 @@ function handleRecipeSaveClick(form){
     console.log(recipesList.addRecipe);
 }
 
-function handleIngredientAddClick(form){
-    console.log(form.ingredientAdded.value);
-    //pantry.addIngredient(form.ingredientAdded.value);
+
 function handleIngredientAddClick(){
     var name = document.getElementById('ingredientAdded').value;
     console.log(name);
     pantry.addIngredient(name);
     console.log(pantry);
+}
+
+function incrementIngredientAmount(){
+    document.getElementById("ingredientQuantity").innerHTML = 0;
+    console.log();
+}
+
+function decrementIngredientAmount(){
+    //pantry.ingredients[].count--;
+    document.getElementById("ingredientQuantity").innerHTML = 0;
+    console.log(0);
 }
 
 function Ingredient(name){
@@ -71,7 +74,7 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     this.requiredIngredients = document.getElementById('recipeIngredients').value
     //array of strings
     this.instructions = instructions;
-    this.instructions = document.getElementById('')
+    this.instructions = document.getElementById('');
     
     this.totalCalories = totalCalories;
     
