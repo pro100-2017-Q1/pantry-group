@@ -8,20 +8,20 @@ var pantry = {
 
 };
 
-
 var recipesList = {
     recipes : [],
+  
     addRecipe : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
         this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));    
     }
 };
 
-function handleRecipeSaveClick(form){
-    console.log(form.recipeName.value);
+function handleRecipeSaveClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    recipesList.addRecipe(recipeName);
     console.log(recipesList);
-    console.log(recipesList.addRecipe);
 }
-
 
 function handleIngredientAddClick(){
     var name = document.getElementById('ingredientAdded').value;
@@ -71,7 +71,7 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     //Array of ingredient objects with names and required amounts
     this.requiredIngredients = requiredIngredients;
     
-    this.requiredIngredients = document.getElementById('recipeIngredients').value
+    this.requiredIngredients = document.getElementById('ingredientName').value
     //array of strings
     this.instructions = instructions;
     this.instructions = document.getElementById('');
@@ -96,4 +96,5 @@ function printUserInput(){
     }
     //going to use JQuery to grab all ingredientName values and ingredient number values
     
+
 }

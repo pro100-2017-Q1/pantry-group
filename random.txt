@@ -1,1 +1,1 @@
-This is Adam. I talked with jesus and Alex about adding removing objs to the array and localstorage.
+Daniel - Researched how to test simulated user input in order to test that the image upload is working as intended on the create a recipe page.
