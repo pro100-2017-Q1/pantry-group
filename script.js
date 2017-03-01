@@ -71,7 +71,7 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     //Array of ingredient objects with names and required amounts
     this.requiredIngredients = requiredIngredients;
     
-    this.requiredIngredients = document.getElementById('ingredientName').value
+    this.requiredIngredients = document.getElementById('ingredientName').value;
     //array of strings
     this.instructions = instructions;
     this.instructions = document.getElementById('');
@@ -97,4 +97,18 @@ function printUserInput(){
     //going to use JQuery to grab all ingredientName values and ingredient number values
     
 
+}
+
+var recipeObject = { 'recipesList': recipesList.recipes};
+console.log(recipesList.recipes);
+console.log(recipeObject);
+
+function storeRecipe(){
+    localStorage.setItem('recipeObject', JSON.stringify(recipeObject));
+    
+}
+
+function retrieveRecipe(){
+    var retrievedRecipeObject = localStorage.getItem('recipeObject');
+    console.log('retrievedRecipeObject: ', JSON.stringify(retrievedRecipeObject));
 }
