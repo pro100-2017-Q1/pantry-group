@@ -91,19 +91,12 @@ function Requirement(name, count){
 
 function Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage){
     //String name of recipe
-    this.name = name;
-    
     this.name = document.getElementById('recipeName').value;
     //Array of ingredient objects with names and required amounts
-    this.requiredIngredients = requiredIngredients;
-    
     this.requiredIngredients = document.getElementById('ingredientName').value;
     //array of strings
-    this.instructions = instructions;
-    this.instructions = document.getElementById('');
-    
-    this.totalCalories = totalCalories;
-    
+    this.instructions = document.getElementById('recipeInstructions').value;
+        
     this.totalCalories = document.getElementById('calorieIntake').value
     
     this.recipeImage = recipeImage;
