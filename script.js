@@ -55,6 +55,32 @@ recipesList = {
     }
 };
 
+var weeklyMealPlan = {
+    recipes : [], 
+
+    addRecipeToPlan : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));
+    },
+
+    deleteRecipeFromPlan : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.splice(recipes.indexOf(name), 1);
+    }
+};
+
+function handleMealPlanAddClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    weeklyMealPlan.addRecipeToPlan(recipeName);
+    console.log(weeklyMealPlan);
+}
+
+function handleMealPlanDeleteClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    weeklyMealPlan.deleteRecipeFromPlan(recipeName);
+    console.log(weeklyMealPlan);
+}
+
 function handleRecipeSaveClick(){
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
@@ -105,19 +131,12 @@ function Requirement(name, count){
 
 function Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage){
     //String name of recipe
-    this.name = name;
-    
     this.name = document.getElementById('recipeName').value;
     //Array of ingredient objects with names and required amounts
-    this.requiredIngredients = requiredIngredients;
-    
-    this.requiredIngredients = document.getElementById('ingredientName').value
+    this.requiredIngredients = document.getElementById('ingredientName').value;
     //array of strings
-    this.instructions = instructions;
-    this.instructions = document.getElementById('');
-    
-    this.totalCalories = totalCalories;
-    
+    this.instructions = document.getElementById('recipeInstructions').value;
+        
     this.totalCalories = document.getElementById('calorieIntake').value
     
     this.recipeImage = recipeImage;
@@ -137,4 +156,18 @@ function printUserInput(){
     //going to use JQuery to grab all ingredientName values and ingredient number values
     
 
+}
+
+var recipeObject = { 'recipesList': recipesList.recipes};
+console.log(recipesList.recipes);
+console.log(recipeObject);
+
+function storeRecipe(){
+    localStorage.setItem('recipeObject', JSON.stringify(recipeObject));
+    
+}
+
+function retrieveRecipe(){
+    var retrievedRecipeObject = localStorage.getItem('recipeObject');
+    console.log('retrievedRecipeObject: ', JSON.stringify(retrievedRecipeObject));
 }
