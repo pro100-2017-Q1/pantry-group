@@ -4,15 +4,54 @@ var pantry = {
     addIngredient : function(name){
         this.ingredients.push(new Ingredient(name));
         console.log(name + "Added");
+
+        var newItemDiv = document.createElement("div");
+        newItemDiv.className = "form-group";
+
+        var itemName = document.createElement("div"); 
+        itemName.innerHTML = name;
+        itemName.className = "col-sm-3";
+        itemName.id = name + "Div";
+        itemName.nodeName = name;
+
+        var minusButton = document.createElement("button");
+        minusButton.className = "col-sm-1";
+        minusButton.innerHTML = "-";
+        minusButton.type = "submit";
+        minusButton.onclick = "decrementIngredientAmount(this)";
+        minusButton.id = "decrement" + name + "Button";
+        itemName.nodeName = name;
+
+        var itemCount = document.createElement("p");
+        itemCount.className = "col-sm-1";
+        itemCount.id = name + "Quantity";
+        itemCount.innerHTML = 1;
+        itemName.nodeName = name;
+
+        var addButton = document.createElement("button");
+        addButton.className = "col-sm-1";
+        addButton.innerHTML = "+";
+        addButton.type = "submit";
+        addButton.onclick = "incrementIngredientAmount(this)";
+        addButton.id = "increment" + name + "Button";
+        itemName.nodeName = name;
+
+        document.getElementById("ingredientList").appendChild(newItemDiv);
+        newItemDiv.appendChild(itemName);
+        newItemDiv.appendChild(minusButton);
+        newItemDiv.appendChild(itemCount);
+        newItemDiv.appendChild(addButton);
     }
+    
 
 };
 
-var recipesList = {
+recipesList = {
     recipes : [],
   
     addRecipe : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));    
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage)); 
+        
     }
 };
 
@@ -30,9 +69,10 @@ function handleIngredientAddClick(){
     console.log(pantry);
 }
 
-function incrementIngredientAmount(){
-    document.getElementById("ingredientQuantity").innerHTML = 0;
-    console.log();
+function incrementIngredientAmount(button){
+    ingredientEffected = button.name;
+    console.log(button.name);
+    console.log(ingredientEffected);
 }
 
 function decrementIngredientAmount(){
