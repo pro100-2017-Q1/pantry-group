@@ -16,6 +16,32 @@ var recipesList = {
     }
 };
 
+var weeklyMealPlan = {
+    recipes : [], 
+
+    addRecipeToPlan : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));
+    },
+
+    deleteRecipeFromPlan : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+        this.recipes.splice(recipes.indexOf(name), 1);
+    }
+};
+
+function handleMealPlanAddClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    weeklyMealPlan.addRecipeToPlan(recipeName);
+    console.log(weeklyMealPlan);
+}
+
+function handleMealPlanDeleteClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    weeklyMealPlan.deleteRecipeFromPlan(recipeName);
+    console.log(weeklyMealPlan);
+}
+
 function handleRecipeSaveClick(){
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
