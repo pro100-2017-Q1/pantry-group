@@ -38,7 +38,8 @@ function handleMealPlanAddClick(){
 function handleMealPlanDeleteClick(){
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
-    
+    weeklyMealPlan.deleteRecipeFromPlan(recipeName);
+    console.log(weeklyMealPlan);
 }
 
 function handleRecipeSaveClick(){
