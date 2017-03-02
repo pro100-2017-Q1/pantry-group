@@ -66,3 +66,7 @@ header #logo {
     border-bottom-right-radius: 5px;
     box-shadow: 5px 5px 5px #888888;
 }
+
+footer {
+    text-align: center;
+}
