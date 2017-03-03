@@ -146,7 +146,7 @@ function printUserInput(){
     var recipeName = document.getElementById('recipeName').value;
     var recipeInstructions = document.getElementById('recipeInstructions').value;
     var totalCalories = document.getElementById('calorieIntake').value;
-    var ingredientName = document.getElementsByClassName('form-control myIngredientsNames');
+    var ingredientName = document.getElementsByClassName('IngredientsNames');
     var ingredientNumber = document.getElementById('ingredientNumber').value;
     console.log(recipeName + " " + recipeInstructions + " " + totalCalories + " " + " " + ingredientNumber);
     for (var i=0; i < ingredientName.length; i++){
@@ -171,3 +171,20 @@ function retrieveRecipe(){
     var retrievedRecipeObject = localStorage.getItem('recipeObject');
     console.log('retrievedRecipeObject: ', JSON.stringify(retrievedRecipeObject));
 }
+
+function handleCreateRecipeClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    var recipeInstructions = document.getElementById('recipeInstructions').value;
+    console.log(recipeInstructions);
+    var totalCalories = document.getElementById('calorieIntake').value;
+    console.log(totalCalories);
+    var ingredientsNames = document.getElementsByClassName('ingredientNames');
+    for(var i=0; i < ingredientsNames.length; i++){
+        
+        console.log(ingredientsNames[i].value);
+    }
+    
+}
+
+    
