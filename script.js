@@ -46,6 +46,8 @@ var pantry = {
 
 };
 
+document.getElementById("ingredientList").innerHTML = pantry;
+
 recipesList = {
     recipes : [],
   
