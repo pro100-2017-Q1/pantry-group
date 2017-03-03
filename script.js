@@ -1,8 +1,9 @@
 
 var pantry = {
     ingredients : [],
-    addIngredient : function(name){
-        this.ingredients.push(new Ingredient(name));
+    addIngredient : function(){
+        this.ingredients.push(new Ingredient());
+        var name = document.getElementById("ingredientAdded").value;
         console.log(name + "Added");
 
         var newItemDiv = document.createElement("div");
@@ -51,8 +52,8 @@ document.getElementById("ingredientList").innerHTML = pantry;
 recipesList = {
     recipes : [],
   
-    addRecipe : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage)); 
+    addRecipe : function(){
+        this.recipes.push(new Recipe()); 
         
     }
 };
@@ -109,9 +110,9 @@ function decrementIngredientAmount(){
     console.log(0);
 }
 
-function Ingredient(name){
+function Ingredient(){
     //String name of ingredient
-    this.name = name;
+    this.name = document.getElementById("ingredientAdded").value;
     //Number of available units for this ingredient
     this.count = 1;
 
