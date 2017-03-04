@@ -70,11 +70,11 @@
                                 <label class="control-label col-sm-2" for="ingredientName">Ingredients:</label>
                                     <form method="POST">
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="myInputs[]" id="ingredientName" placeholder="Enter ingredient name">
+                                            <input type="text" class="form-control ingredientNames" name="myInputs[]" placeholder="Enter ingredient name">
 
                                         </div>
                                         <div class="col-sm-2">
-                                            <input type="number" class="form-control" id="ingredientNumber" placeholder="How many">
+                                            <input type="number" class="form-control ingredientNumber"  placeholder="How many">
                                         </div>
                                     </form>
                             </div>
@@ -82,7 +82,7 @@
                             
                             </div>
                             <div class="col-sm-offset-2 col-sm-10">
-                                     <input type="button" value="Add another" onClick="addIngredientFields();">
+                                     <input type="button" value="Add another" id="addIngredientSelected" onClick="addIngredientFields();">
                             </div>
                             <br/>
                                 
@@ -104,10 +104,11 @@
                             <div class="col-sm-2">
                             </div>
                             <div class="control-label col-sm-2">
-                                <button type="button" class="btn btn-default" onclick="recipesList.addRecipe()">Save</button>
+                                <button type="button" class="btn btn-default" onclick="handleCreateRecipeClick()">Save</button>
                             </div>
                             <div class="col-sm-7">
                             </div>
+                            <br/>
                             <br/>
                             <br/>    
                 </div>
