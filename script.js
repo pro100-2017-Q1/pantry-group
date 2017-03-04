@@ -107,6 +107,12 @@ var weeklyMealPlan = {
     }
 };
 
+function displayRecipesOnCaloriePage(){
+    document.getElementById("recipeDisplay").innerHTML = recipesList;
+    console.log(recipesList);
+    console.log(weeklyMealPlan);
+}
+
 function handleMealPlanAddClick(){
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
@@ -186,21 +192,6 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     this.recipeImage = recipeImage;
 }
 
-function printUserInput(){
-    var recipeName = document.getElementById('recipeName').value;
-    var recipeInstructions = document.getElementById('recipeInstructions').value;
-    var totalCalories = document.getElementById('calorieIntake').value;
-    var ingredientName = document.getElementsByClassName('form-control myIngredientsNames');
-    var ingredientNumber = document.getElementById('ingredientNumber').value;
-    console.log(recipeName + " " + recipeInstructions + " " + totalCalories + " " + " " + ingredientNumber);
-    for (var i=0; i < ingredientName.length; i++){
-        var newIngredientList = ingredientName[i];
-        console.log(newIngredientList);
-    }
-    //going to use JQuery to grab all ingredientName values and ingredient number values
-    
-
-}
 
 
 
@@ -225,3 +216,23 @@ function retrieveIngredientsArray(){
     var ingredients = JSON.parse(localStorage.getItem('ingredients'));
     return ingredients;
 }
+
+
+function handleCreateRecipeClick(){
+    var recipeName = document.getElementById('recipeName').value;
+    console.log(recipeName);
+    var recipeInstructions = document.getElementById('recipeInstructions').value;
+    console.log(recipeInstructions);
+    var totalCalories = document.getElementById('calorieIntake').value;
+    console.log(totalCalories);
+    var ingredientsNames = document.getElementsByClassName('ingredientNames');
+    var ingredientsNumber = document.getElementsByClassName('ingredientNumber');
+    
+    for(var i=0, j=0; i < ingredientsNames.length, j < ingredientsNumber.length; i++, j++){
+        var combineNameNumber = ingredientsNames[i].value.concat.ingredientsNumber[j].value;
+        console.log(combineNameNumber);
+        
+    }    
+}
+
+    
