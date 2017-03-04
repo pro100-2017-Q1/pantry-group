@@ -3,8 +3,8 @@ var pantry = {
     ingredients : [],
     addIngredient : function(){
         this.ingredients.push(new Ingredient());
+        console.log(pantry);
         var name = document.getElementById("ingredientAdded").value;
-        console.log(name + "Added");
 
         var newItemDiv = document.createElement("div");
         newItemDiv.className = "form-group";
@@ -38,10 +38,53 @@ var pantry = {
         newItemDiv.appendChild(minusButton);
         newItemDiv.appendChild(itemCount);
         newItemDiv.appendChild(addButton);
-
-        console.log(pantry);
     }
 };
+
+console.log(pantry.ingredients);
+
+function displayIngredients(){
+    if (retrieveIngredientsArray() != null) {
+        console.log(retrieveIngredientsArray());
+        pantry.ingredients = retrieveIngredientsArray();
+        for (var index = 0; index < pantry.ingredients.length; index++) {
+            var item = pantry.ingredients[index];
+            
+            var newItemDiv = document.createElement("div");
+            newItemDiv.className = "form-group";
+
+            var itemName = document.createElement("div"); 
+            itemName.innerHTML = item.name;
+            itemName.className = "col-sm-3";
+            itemName.id = item.name + "Div";
+
+            var minusButton = document.createElement("button");
+            minusButton.className = "col-sm-1";
+            minusButton.innerHTML = "-";
+            minusButton.type = "submit";
+            minusButton.onclick = decrementIngredientAmount;
+            minusButton.id = item.name;
+
+            var itemCount = document.createElement("p");
+            itemCount.className = "col-sm-1";
+            itemCount.id = item.name + "Quantity";
+            itemCount.innerHTML = item.count;
+
+            var addButton = document.createElement("button");
+            addButton.className = "col-sm-1";
+            addButton.innerHTML = "+";
+            addButton.type = "submit";
+            addButton.onclick = incrementIngredientAmount;
+            addButton.id = item.name;
+
+            document.getElementById("ingredientList").appendChild(newItemDiv);
+            newItemDiv.appendChild(itemName);
+            newItemDiv.appendChild(minusButton);
+            newItemDiv.appendChild(itemCount);
+            newItemDiv.appendChild(addButton);
+        }   
+    }    
+}
 
 recipesList = {
     recipes : [],
@@ -93,10 +136,12 @@ function handleIngredientAddClick(){
 }
 
 function incrementIngredientAmount(button){
+    console.log(button)
     ingredientEffected = findIngredient(button.path[0].id);
     console.log(ingredientEffected);
+    currentName = ingredientEffected.name;
     ingredientEffected.count++;
-    document.getElementById(ingredientEffected.name + "Quantity").innerHTML = ingredientEffected.count;
+    document.getElementById(currentName + "Quantity").innerHTML = ingredientEffected.count;
 }
 
 function findIngredient(ingredToFind){
@@ -157,9 +202,9 @@ function printUserInput(){
 
 }
 
+
+
 var recipeObject = { 'recipesList': recipesList.recipes};
-console.log(recipesList.recipes);
-console.log(recipeObject);
 
 function storeRecipe(){
     localStorage.setItem('recipeObject', JSON.stringify(recipeObject));
@@ -169,4 +214,14 @@ function storeRecipe(){
 function retrieveRecipe(){
     var retrievedRecipeObject = localStorage.getItem('recipeObject');
     console.log('retrievedRecipeObject: ', JSON.stringify(retrievedRecipeObject));
+}
+
+function storeIngredientsArray(){
+    localStorage.setItem('ingredients', JSON.stringify(pantry.ingredients));
+    
+}
+
+function retrieveIngredientsArray(){
+    var ingredients = JSON.parse(localStorage.getItem('ingredients'));
+    return ingredients;
 }
