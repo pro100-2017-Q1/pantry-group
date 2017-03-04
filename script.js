@@ -68,6 +68,12 @@ var weeklyMealPlan = {
     }
 };
 
+function displayRecipesOnCaloriePage(){
+    document.getElementById("recipeDisplay").innerHTML = recipesList;
+    console.log(recipesList);
+    console.log(weeklyMealPlan);
+}
+
 function handleMealPlanAddClick(){
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
