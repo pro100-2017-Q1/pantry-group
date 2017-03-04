@@ -141,21 +141,6 @@ function Recipe(name, requiredIngredients, instructions, totalCalories, recipeIm
     this.recipeImage = recipeImage;
 }
 
-function printUserInput(){
-    var recipeName = document.getElementById('recipeName').value;
-    var recipeInstructions = document.getElementById('recipeInstructions').value;
-    var totalCalories = document.getElementById('calorieIntake').value;
-    var ingredientName = document.getElementsByClassName('IngredientsNames');
-    var ingredientNumber = document.getElementById('ingredientNumber').value;
-    console.log(recipeName + " " + recipeInstructions + " " + totalCalories + " " + " " + ingredientNumber);
-    for (var i=0; i < ingredientName.length; i++){
-        var newIngredientList = ingredientName[i];
-        console.log(newIngredientList);
-    }
-    //going to use JQuery to grab all ingredientName values and ingredient number values
-    
-
-}
 
 var recipeObject = { 'recipesList': recipesList.recipes};
 console.log(recipesList.recipes);
@@ -179,11 +164,13 @@ function handleCreateRecipeClick(){
     var totalCalories = document.getElementById('calorieIntake').value;
     console.log(totalCalories);
     var ingredientsNames = document.getElementsByClassName('ingredientNames');
-    for(var i=0; i < ingredientsNames.length; i++){
-        
-        console.log(ingredientsNames[i].value);
-    }
+    var ingredientsNumber = document.getElementsByClassName('ingredientNumber');
     
+    for(var i=0, j=0; i < ingredientsNames.length, j < ingredientsNumber.length; i++, j++){
+        var combineNameNumber = ingredientsNames[i].value.concat.ingredientsNumber[j].value;
+        console.log(combineNameNumber);
+        
+    }    
 }
 
     
