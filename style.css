@@ -70,3 +70,10 @@ header #logo {
 footer {
     text-align: center;
 }
+
+#ingredientList {
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 10px;
+    
+}

@@ -8,7 +8,10 @@ var pantry = {
 
         var newItemDiv = document.createElement("div");
         newItemDiv.className = "form-group";
-
+        
+        var emptyDiv = document.createElement("div");
+        emptyDiv.className = "col-sm-1";
+        
         var itemName = document.createElement("div"); 
         itemName.innerHTML = name;
         itemName.className = "col-sm-3";
@@ -32,12 +35,17 @@ var pantry = {
         addButton.type = "submit";
         addButton.onclick = incrementIngredientAmount;
         addButton.id = name;
+        
+        var secondEmptyDiv = document.createElement("div");
+        secondEmptyDiv.className = "col-sm-1";
 
         document.getElementById("ingredientList").appendChild(newItemDiv);
+        newItemDiv.appendChild(emptyDiv);
         newItemDiv.appendChild(itemName);
         newItemDiv.appendChild(minusButton);
         newItemDiv.appendChild(itemCount);
         newItemDiv.appendChild(addButton);
+        newItemDiv.appendChild(secondEmptyDiv);
     }
 };
 
@@ -52,10 +60,13 @@ function displayIngredients(){
             
             var newItemDiv = document.createElement("div");
             newItemDiv.className = "form-group";
+            
+            var emptyDiv = document.createElement("div");
+            emptyDiv.className = "col-sm-1";
 
-            var itemName = document.createElement("div"); 
+            var itemName = document.createElement("div");
             itemName.innerHTML = item.name;
-            itemName.className = "col-sm-3";
+            itemName.className = "col-sm-7";
             itemName.id = item.name + "Div";
 
             var minusButton = document.createElement("button");
@@ -76,12 +87,17 @@ function displayIngredients(){
             addButton.type = "submit";
             addButton.onclick = incrementIngredientAmount;
             addButton.id = item.name;
+            
+            var secondEmptyDiv = document.createElement("div");
+            secondEmptyDiv.className = "col-sm-1";
 
             document.getElementById("ingredientList").appendChild(newItemDiv);
+            newItemDiv.appendChild(emptyDiv);
             newItemDiv.appendChild(itemName);
             newItemDiv.appendChild(minusButton);
             newItemDiv.appendChild(itemCount);
             newItemDiv.appendChild(addButton);
+            newItemDiv.appendChild(secondEmptyDiv);
         }   
     }    
 }
