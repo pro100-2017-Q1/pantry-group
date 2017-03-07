@@ -69,18 +69,19 @@
                             <div class="form-group"> 
                                 <label class="control-label col-sm-2" for="ingredientName">Ingredients:</label>
                                     <form method="POST">
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control ingredientNames" name="myInputs[]" placeholder="Enter ingredient name">
+                                        <div class="col-sm-4" id="requirements">
+                                            <input type="text" class="form-control ingredientNames" id="requirement0" placeholder="Enter ingredient name">
+                                            <input type="number" class="form-control ingredientNumber" id="requiredAmount0"  placeholder="How many">
+
 
                                         </div>
-                                        <div class="col-sm-2">
-                                            <input type="number" class="form-control ingredientNumber"  placeholder="How many">
-                                        </div>
+                                        <!--<div class="col-sm-2">
+                                        </div>-->
                                     </form>
                             </div>
-                            <div id="addedIngredient">
+                            <!--<div id="addedIngredient">
                             
-                            </div>
+                            </div>-->
                             <div class="col-sm-offset-2 col-sm-10">
                                      <input type="button" value="Add another" id="addIngredientSelected" onClick="addIngredientFields();">
                             </div>
@@ -89,7 +90,7 @@
                             <br/>
                             
                         </form>
-                        <form class="form-horizontal">
+                        <!--<form class="form-horizontal">
                             <div class="form-group"> 
                                     <label class="control-label col-sm-2" for="imageUpload">Image Upload:</label>
                                     <div class="col-sm-5">
@@ -100,11 +101,11 @@
                                         
                             </div>
                             
-                        </form>
+                        </form>-->
                             <div class="col-sm-2">
                             </div>
                             <div class="control-label col-sm-2">
-                                <button type="button" class="btn btn-default">Save</button>
+                                <button type="button" class="btn btn-default" onclick="handleRecipeSaveClick()">Save</button>
                             </div>
                             <div class="col-sm-7">
                             </div>
@@ -119,7 +120,7 @@
         </div>
 
         <script src="../scripts/imageUpload.js"></script>
-        <script src="../scripts/addIngredient.js"></script>
+        <!--<script src="../scripts/addIngredient.js"></script>-->
         <script src="../script.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

@@ -45,7 +45,7 @@ console.log(pantry.ingredients);
 
 function displayIngredients(){
     if (retrieveIngredientsArray() != null) {
-        console.log(retrieveIngredientsArray());
+        //console.log(retrieveIngredientsArray());
         pantry.ingredients = retrieveIngredientsArray();
         for (var index = 0; index < pantry.ingredients.length; index++) {
             var item = pantry.ingredients[index];
@@ -95,6 +95,32 @@ recipesList = {
     }
 };
 
+var requirementNumber = 1;
+function addIngredientFields(){
+
+    var newRequirementField = document.createElement("input");
+    newRequirementField.type = "text";
+    newRequirementField.id = "requirement"+requirementNumber;
+    newRequirementField.placeholder = "Enter ingredient name"
+
+    var newRequirementAmount = document.createElement("input");
+    newRequirementAmount.type = "number";
+    newRequirementAmount.id = "requiredAmount"+requirementNumber;
+    newRequirementAmount.placeholder = "How many";
+
+    document.getElementById("requirements").appendChild(newRequirementField);
+    document.getElementById("requirements").appendChild(newRequirementAmount);
+
+    requirementNumber++;    
+
+}
+
+function displayRecipes(){
+    if(retrieveRecipes() != null){
+
+    }
+}
+
 var weeklyMealPlan = {
     recipes : [], 
 
@@ -128,10 +154,11 @@ function handleMealPlanDeleteClick(){
 }
 
 function handleRecipeSaveClick(){
-    var recipeName = document.getElementById('recipeName').value;
+    // var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
-    recipesList.addRecipe(recipeName);
+    recipesList.addRecipe();
     console.log(recipesList);
+    requirementNumber=1;
 }
 
 function handleIngredientAddClick(){
@@ -179,32 +206,28 @@ function Requirement(name, count){
     this.count = count;
 }
 
-function Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage){
+function Recipe(){
     //String name of recipe
     this.name = document.getElementById('recipeName').value;
     //Array of ingredient objects with names and required amounts
-    this.requiredIngredients = document.getElementById('ingredientName').value;
+    requirements = [];
+    for (var index = 0; index < requirementNumber; index++) {
+        requirements.push(new Requirement(document.getElementById("requirement"+index).value, document.getElementById("requiredAmount"+index).value));
+    }
+    this.requiredIngredients = requirements;
     //array of strings
     this.instructions = document.getElementById('recipeInstructions').value;
         
     this.totalCalories = document.getElementById('calorieIntake').value
-    
-    this.recipeImage = recipeImage;
 }
 
+// function storeRecipes(){
+//     localStorage.setItem('recipeObject', JSON.stringify(recipesList.recipes));
+// }
 
-
-
-var recipeObject = { 'recipesList': recipesList.recipes};
-
-function storeRecipe(){
-    localStorage.setItem('recipeObject', JSON.stringify(recipeObject));
-    
-}
-
-function retrieveRecipe(){
-    var retrievedRecipeObject = localStorage.getItem('recipeObject');
-    console.log('retrievedRecipeObject: ', JSON.stringify(retrievedRecipeObject));
+function retrieveRecipes(){
+    var retrievedRecipeObject = JSON.parse(localStorage.getItem('recipeObject'));
+    return retrievedRecipeObject;
 }
 
 function storeIngredientsArray(){

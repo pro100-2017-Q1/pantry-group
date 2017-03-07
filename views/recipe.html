@@ -18,7 +18,7 @@
             </div>
         </header>
     </head>
-    <body>
+    <body onload="displayRecipes()" onunload="StoreRecipes()">
         <div class="row">
             <div class="col-sm-1">
                 <nav>
@@ -47,7 +47,7 @@
                                     <div class="col-sm-2">
                                     </div>
                             </div>
-                        <div>
+                        <div id="ListOfRecipes">
                             <h3>List of Existing Recipes go here</h3>
                         </div>
                     </form>
