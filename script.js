@@ -161,7 +161,9 @@ function findIngredient(ingredToFind){
 function decrementIngredientAmount(button){
     ingredientEffected = findIngredient(button.path[0].id);
     console.log(ingredientEffected);
-    ingredientEffected.count--;
+    if(ingredientEffected.count > 0){
+        ingredientEffected.count--;
+    }
     document.getElementById(ingredientEffected.name + "Quantity").innerHTML = ingredientEffected.count;
 }
 
