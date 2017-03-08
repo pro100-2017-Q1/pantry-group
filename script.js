@@ -51,12 +51,14 @@ var pantry = {
 
 console.log(pantry.ingredients);
 
-function displayIngredients(){
-    if (retrieveIngredientsArray() != null) {
+if (retrieveIngredientsArray() != null) {
         //console.log(retrieveIngredientsArray());
         pantry.ingredients = retrieveIngredientsArray();
-        for (var index = 0; index < pantry.ingredients.length; index++) {
-            var item = pantry.ingredients[index];
+}
+function displayIngredients(ingredientArray){
+    
+        for (var index = 0; index < ingredientArray.length; index++) {
+            var item = ingredientArray[index];
             
             var newItemDiv = document.createElement("div");
             newItemDiv.className = "form-group";
@@ -97,8 +99,7 @@ function displayIngredients(){
             newItemDiv.appendChild(minusButton);
             newItemDiv.appendChild(itemCount);
             newItemDiv.appendChild(addButton);
-            newItemDiv.appendChild(secondEmptyDiv);
-        }   
+            newItemDiv.appendChild(secondEmptyDiv);   
     }    
 }
 
@@ -202,14 +203,18 @@ function findIngredient(ingredToFind){
 }
 
 function filterIngredients(){
+    console.log("boop");
     var filterTerm = document.getElementById("ingredientFilter").value;
     var filteredIngredients = [];
     for (var index = 0; index < pantry.ingredients.length; index++) {
-        if (pantry.ingredients[index].name == filterTerm || pantry.ingredients[index].name.startWith(filterTerm)) {
+        if (pantry.ingredients[index].name == filterTerm || pantry.ingredients[index].name.startsWith(filterTerm)) {
+            console.log(pantry.ingredients[index].name);
             filteredIngredients.push(pantry.ingredients[index]);
         }
     }
-    
+    console.log(filterIngredients);
+    displayIngredients(filterIngredients);
+
 }
 
 function decrementIngredientAmount(button){
