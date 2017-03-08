@@ -10,7 +10,7 @@ var pantry = {
         newItemDiv.className = "form-group";
         
         var emptyDiv = document.createElement("div");
-        emptyDiv.className = "col-sm-1";
+        emptyDiv.className = "col-sm-3";
         
         var itemName = document.createElement("div"); 
         itemName.innerHTML = name;
@@ -25,6 +25,7 @@ var pantry = {
         minusButton.id = name;
 
         var itemCount = document.createElement("p");
+        itemCount.style = "text-align: center";
         itemCount.className = "col-sm-1";
         itemCount.id = name + "Quantity";
         itemCount.innerHTML = 1;
@@ -37,7 +38,7 @@ var pantry = {
         addButton.id = name;
         
         var secondEmptyDiv = document.createElement("div");
-        secondEmptyDiv.className = "col-sm-1";
+        secondEmptyDiv.className = "col-sm-3";
 
         document.getElementById("ingredientList").appendChild(newItemDiv);
         newItemDiv.appendChild(emptyDiv);
@@ -64,11 +65,11 @@ function displayIngredients(ingredientArray){
             newItemDiv.className = "form-group";
             
             var emptyDiv = document.createElement("div");
-            emptyDiv.className = "col-sm-1";
+            emptyDiv.className = "col-sm-3";
 
             var itemName = document.createElement("div");
             itemName.innerHTML = item.name;
-            itemName.className = "col-sm-7";
+            itemName.className = "col-sm-3";
             itemName.id = item.name + "Div";
 
             var minusButton = document.createElement("button");
@@ -79,6 +80,7 @@ function displayIngredients(ingredientArray){
             minusButton.id = item.name;
 
             var itemCount = document.createElement("p");
+            itemCount.style = "text-align: center";
             itemCount.className = "col-sm-1";
             itemCount.id = item.name + "Quantity";
             itemCount.innerHTML = item.count;
@@ -91,7 +93,7 @@ function displayIngredients(ingredientArray){
             addButton.id = item.name;
             
             var secondEmptyDiv = document.createElement("div");
-            secondEmptyDiv.className = "col-sm-1";
+            secondEmptyDiv.className = "col-sm-3";
 
             document.getElementById("ingredientList").appendChild(newItemDiv);
             newItemDiv.appendChild(emptyDiv);
@@ -114,19 +116,37 @@ recipesList = {
 
 var requirementNumber = 1;
 function addIngredientFields(){
-
+    
+    var newIngredientDiv = document.createElement("div");
+    newIngredientDiv.className = "form-group col-sm-12";
+    
+    var testDiv = document.createElement("div");
+//    testDiv.className = "col-sm-2";
+    
     var newRequirementField = document.createElement("input");
+    newRequirementField.className = "form-control";
     newRequirementField.type = "text";
     newRequirementField.id = "requirement"+requirementNumber;
-    newRequirementField.placeholder = "Enter ingredient name"
+    newRequirementField.placeholder = "Enter ingredient name";
+    
+    var test2Div = document.createElement("div");
+    test2Div.className = "col-sm-2";
 
     var newRequirementAmount = document.createElement("input");
+    newRequirementAmount.className = "form-control col-sm-9";
     newRequirementAmount.type = "number";
     newRequirementAmount.id = "requiredAmount"+requirementNumber;
     newRequirementAmount.placeholder = "How many";
 
-    document.getElementById("requirements").appendChild(newRequirementField);
-    document.getElementById("requirements").appendChild(newRequirementAmount);
+//    document.getElementById("requirements").appendChild(newRequirementField);
+//    document.getElementById("requirements").appendChild(newRequirementAmount);
+    document.getElementById("requirements").appendChild(newIngredientDiv);
+    newIngredientDiv.appendChild(testDiv);
+    newIngredientDiv.appendChild(test2Div);
+    newIngredientDiv.appendChild(newRequirementField);
+    
+    newIngredientDiv.appendChild(newRequirementAmount);
+    
 
     requirementNumber++;    
 
