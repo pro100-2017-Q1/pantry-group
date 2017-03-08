@@ -113,19 +113,37 @@ recipesList = {
 
 var requirementNumber = 1;
 function addIngredientFields(){
-
+    
+    var newIngredientDiv = document.createElement("div");
+    newIngredientDiv.className = "form-group col-sm-12";
+    
+    var testDiv = document.createElement("div");
+//    testDiv.className = "col-sm-2";
+    
     var newRequirementField = document.createElement("input");
+    newRequirementField.className = "form-control";
     newRequirementField.type = "text";
     newRequirementField.id = "requirement"+requirementNumber;
-    newRequirementField.placeholder = "Enter ingredient name"
+    newRequirementField.placeholder = "Enter ingredient name";
+    
+    var test2Div = document.createElement("div");
+    test2Div.className = "col-sm-2";
 
     var newRequirementAmount = document.createElement("input");
+    newRequirementAmount.className = "form-control col-sm-9";
     newRequirementAmount.type = "number";
     newRequirementAmount.id = "requiredAmount"+requirementNumber;
     newRequirementAmount.placeholder = "How many";
 
-    document.getElementById("requirements").appendChild(newRequirementField);
-    document.getElementById("requirements").appendChild(newRequirementAmount);
+//    document.getElementById("requirements").appendChild(newRequirementField);
+//    document.getElementById("requirements").appendChild(newRequirementAmount);
+    document.getElementById("requirements").appendChild(newIngredientDiv);
+    newIngredientDiv.appendChild(testDiv);
+    newIngredientDiv.appendChild(test2Div);
+    newIngredientDiv.appendChild(newRequirementField);
+    
+    newIngredientDiv.appendChild(newRequirementAmount);
+    
 
     requirementNumber++;    
 
