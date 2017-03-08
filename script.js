@@ -219,6 +219,17 @@ function findIngredient(ingredToFind){
     }
 }
 
+function filterIngredients(){
+    var filterTerm = document.getElementById("ingredientFilter").value;
+    var filteredIngredients = [];
+    for (var index = 0; index < pantry.ingredients.length; index++) {
+        if (pantry.ingredients[index].name == filterTerm || pantry.ingredients[index].name.startWith(filterTerm)) {
+            filteredIngredients.push(pantry.ingredients[index]);
+        }
+    }
+    
+}
+
 function decrementIngredientAmount(button){
     ingredientEffected = findIngredient(button.path[0].id);
     console.log(ingredientEffected);
