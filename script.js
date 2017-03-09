@@ -226,15 +226,19 @@ function filterIngredients(){
     console.log("boop");
     var filterTerm = document.getElementById("ingredientFilter").value;
     var filteredIngredients = [];
-    for (var index = 0; index < pantry.ingredients.length; index++) {
-        if (pantry.ingredients[index].name == filterTerm || pantry.ingredients[index].name.startsWith(filterTerm)) {
-            console.log(pantry.ingredients[index].name);
-            filteredIngredients.push(pantry.ingredients[index]);
+    if(filterTerm == undefined){
+           displayIngredients(pantry.ingredients);
         }
-    }
-    console.log(filterIngredients);
-    displayIngredients(filterIngredients);
-
+        else{
+            for (var index = 0; index < pantry.ingredients.length; index++) {
+                if (pantry.ingredients[index].name.toLowerCase() == filterTerm.toLowerCase() || pantry.ingredients[index].name.toLowerCase().startsWith(filterTerm.toLowerCase())) {
+                console.log(pantry.ingredients[index].name);
+                filteredIngredients.push(pantry.ingredients[index]);
+                }
+             }
+            console.log(filterIngredients);
+            displayIngredients(filterIngredients);
+                }
 }
 
 function decrementIngredientAmount(button){
