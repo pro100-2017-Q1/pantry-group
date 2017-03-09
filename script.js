@@ -353,4 +353,14 @@ function retrieveIngredientsArray(){
     return ingredients;
 }
 
+function validateForm(){
+    var x = document.forms["recipeForm"]["recipeName"].value;
+    if(x == ""){
+        alert("Recipe has no name");
+        return false;
+    }else{
+        handleRecipeSaveClick();
+    }
+}
+
     
