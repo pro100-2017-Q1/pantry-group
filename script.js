@@ -128,7 +128,6 @@ function addIngredientFields(){
     newIngredientDiv.id = "requirementDiv"+requirementNumber;
     
     var testDiv = document.createElement("div");
-//    testDiv.className = "col-sm-2";
     
     var newRequirementField = document.createElement("input");
     newRequirementField.className = "form-control";
@@ -145,8 +144,6 @@ function addIngredientFields(){
     newRequirementAmount.id = "requiredAmount"+requirementNumber;
     newRequirementAmount.placeholder = "How many";
 
-//    document.getElementById("requirements").appendChild(newRequirementField);
-//    document.getElementById("requirements").appendChild(newRequirementAmount);
     document.getElementById("requirements").appendChild(newIngredientDiv);
     newIngredientDiv.appendChild(testDiv);
     newIngredientDiv.appendChild(test2Div);
@@ -160,17 +157,56 @@ function addIngredientFields(){
 }
 
 function displayRecipes(){
+    for (var index = 0; index < recipesList.recipes.length; index++) {
+        var recipe = recipesList.recipes[index];
+
+        recipeDiv = document.createElement("div");
+        recipeDiv.id = recipe.name + "div";
+
+        recipeNameDiv = document.createElement("div");
+        recipeNameDiv.id = recipe.name;
+        recipeNameDiv.innerHTML = recipe.name;
+
+        recipeRequirements = document.createElement("ul");
+        recipeRequirements.id = recipe.name + "Requirements";
+        for (var index = 0; index < recipe.requiredIngredients.length; index++) {
+            var item = recipe.requiredIngredients[index];
+            requirementDiv = document.createElement("li");
+            requirementDiv.id = item.name + "div";
+            requirementDiv.innerHTML = item.name + ": " + findIngredient(item.name).count + " / " + item.count;
+            recipeRequirements.appendChild(requirementDiv);
+        }
+
+        recipeInstructionsDiv = document.createElement("div");
+        recipeInstructionsDiv.id = recipe.name + "Instructions";
+        recipeInstructionsDiv.innerHTML = recipe.instructions;
+
+        recipeCalorieDiv = document.createElement("div");
+        recipeCalorieDiv.id = recipe.name + "Calories";
+        recipeCalorieDiv.innerHTML = recipe.totalCalories;
+
+
+        
+        document.getElementById("ListOfRecipes").appendChild(recipeDiv);
+        recipeDiv.appendChild(recipeNameDiv);
+        recipeDiv.appendChild(recipeCalorieDiv);
+        recipeDiv.appendChild(recipeRequirements);
+        recipeDiv.appendChild(recipeInstructionsDiv);
+
+    }
     
+
+
 }
 
 var weeklyMealPlan = {
     recipes : [], 
 
-    addRecipeToPlan : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
-        this.recipes.push(new Recipe(name, requiredIngredients, instructions, totalCalories, recipeImage));
+    addRecipeToPlan : function(){
+        this.recipes.push(new Recipe());
     },
 
-    deleteRecipeFromPlan : function(name, requiredIngredients, instructions, totalCalories, recipeImage){
+    deleteRecipeFromPlan : function(){
         this.recipes.splice(recipes.indexOf(name), 1);
     }
 };
@@ -229,6 +265,7 @@ function findIngredient(ingredToFind){
             return pantry.ingredients[index];
         }
     }
+    return 
 }
 
 function filterIngredients(){
