@@ -1,4 +1,3 @@
-
 var pantry = {
     ingredients : [],
     addIngredient : function(){
@@ -57,10 +56,10 @@ if (retrieveIngredientsArray() != null) {
         pantry.ingredients = retrieveIngredientsArray();
 }
 function displayIngredients(ingredientArray){
-    
+        console.log("in display ingredients");
         for (var index = 0; index < ingredientArray.length; index++) {
             var item = ingredientArray[index];
-            
+             console.log(item);
             var newItemDiv = document.createElement("div");
             newItemDiv.className = "form-group";
             
@@ -71,7 +70,7 @@ function displayIngredients(ingredientArray){
             itemName.innerHTML = item.name;
             itemName.className = "col-sm-3";
             itemName.id = item.name + "Div";
-
+            console.log(itemName);
             var minusButton = document.createElement("button");
             minusButton.className = "col-sm-1";
             minusButton.innerHTML = "-";
@@ -102,7 +101,7 @@ function displayIngredients(ingredientArray){
             newItemDiv.appendChild(itemCount);
             newItemDiv.appendChild(addButton);
             newItemDiv.appendChild(secondEmptyDiv);   
-    }    
+    } 
 }
 
 recipesList = {
@@ -232,21 +231,31 @@ function findIngredient(ingredToFind){
 }
 
 function filterIngredients(){
-    console.log("boop");
     var filterTerm = document.getElementById("ingredientFilter").value;
     var filteredIngredients = [];
-    if(filterTerm == undefined){
+    var listOfIngredients = document.getElementById("ingredientList");
+            for(var i = 0; i < listOfIngredients.childElementCount; i++){
+                listOfIngredients.removeChild(listOfIngredients.childNodes[0])
+                
+            }
+    if(filterTerm == ""){
+        console.log(pantry.ingredients);
            displayIngredients(pantry.ingredients);
+           
         }
         else{
+            console.log(filterIngredients);
             for (var index = 0; index < pantry.ingredients.length; index++) {
                 if (pantry.ingredients[index].name.toLowerCase() == filterTerm.toLowerCase() || pantry.ingredients[index].name.toLowerCase().startsWith(filterTerm.toLowerCase())) {
                 console.log(pantry.ingredients[index].name);
                 filteredIngredients.push(pantry.ingredients[index]);
+                console.log("boop3");
+                console.log(pantry.ingredients[index]);
                 }
              }
-            console.log(filterIngredients);
-            displayIngredients(filterIngredients);
+            console.log(filteredIngredients);
+            displayIngredients(filteredIngredients);
+            
                 }
 }
 
