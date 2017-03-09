@@ -1,10 +1,11 @@
 var pantry = {
     ingredients : [],
-    addIngredient : function(){
+    addIngredient : function(isNew){
+        var name = document.getElementById("ingredientAdded").value;
+        if(isNew){
         this.ingredients.push(new Ingredient());
         console.log(pantry);
-        var name = document.getElementById("ingredientAdded").value;
-
+        
         var newItemDiv = document.createElement("div");
         newItemDiv.className = "form-group";
         
@@ -46,6 +47,11 @@ var pantry = {
         newItemDiv.appendChild(itemCount);
         newItemDiv.appendChild(addButton);
         newItemDiv.appendChild(secondEmptyDiv);
+    }else{
+        var currentIngredient = findIngredient(name);
+        currentIngredient.count++;
+        document.getElementById(name + "Quantity").innerHTML = currentIngredient.count;
+    }
     }
 };
 
@@ -302,6 +308,11 @@ function decrementIngredientAmount(button){
     if(ingredientEffected.count > 0){
         ingredientEffected.count--;
     }
+    if(ingredientEffected.count <= 0){
+        console.log(pantry.ingredients[pantry.ingredients.indexOf(ingredientEffected)])
+        pantry.ingredients.splice(pantry.ingredients.indexOf(ingredientEffected),1);
+        location.reload();
+    }
     document.getElementById(ingredientEffected.name + "Quantity").innerHTML = ingredientEffected.count;
 }
 
@@ -361,6 +372,20 @@ function validateForm(){
     }else{
         handleRecipeSaveClick();
     }
+}
+
+function validateIngredient(){
+    var x = document.forms["ingredientForm"]["ingredientAdded"].value;
+    var addNew = true;
+    for(var i = 0; i < pantry.ingredients.length; i++){
+        if(x == pantry.ingredients[i].name){
+            addNew = false;
+            break;
+        }else{
+            addNew = true;
+        }
+    }
+    pantry.addIngredient(addNew);
 }
 
     
