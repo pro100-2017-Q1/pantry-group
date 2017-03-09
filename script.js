@@ -114,11 +114,18 @@ recipesList = {
     }
 };
 
+if(retrieveRecipes() != null){
+    recipesList.recipes = retrieveRecipes();
+}
+console.log(recipesList.recipes);
+
+
 var requirementNumber = 1;
 function addIngredientFields(){
     
     var newIngredientDiv = document.createElement("div");
     newIngredientDiv.className = "form-group col-sm-12";
+    newIngredientDiv.id = "requirementDiv"+requirementNumber;
     
     var testDiv = document.createElement("div");
 //    testDiv.className = "col-sm-2";
@@ -153,9 +160,7 @@ function addIngredientFields(){
 }
 
 function displayRecipes(){
-    if(retrieveRecipes() != null){
-
-    }
+    
 }
 
 var weeklyMealPlan = {
@@ -195,7 +200,11 @@ function handleRecipeSaveClick(){
     console.log(recipeName);
     recipesList.addRecipe();
     console.log(recipesList);
+    for (var index = 1; index < requirementNumber; index++) {
+        document.getElementById("requirements").removeChild(document.getElementById("requirementDiv"+index));
+    }
     requirementNumber=1;
+    storeRecipes();
 }
 
 function handleIngredientAddClick(){
@@ -279,9 +288,9 @@ function Recipe(){
     this.totalCalories = document.getElementById('calorieIntake').value
 }
 
-// function storeRecipes(){
-//     localStorage.setItem('recipeObject', JSON.stringify(recipesList.recipes));
-// }
+function storeRecipes(){
+    localStorage.setItem('recipeObject', JSON.stringify(recipesList.recipes));
+}
 
 function retrieveRecipes(){
     var retrievedRecipeObject = JSON.parse(localStorage.getItem('recipeObject'));
@@ -296,24 +305,6 @@ function storeIngredientsArray(){
 function retrieveIngredientsArray(){
     var ingredients = JSON.parse(localStorage.getItem('ingredients'));
     return ingredients;
-}
-
-
-function handleCreateRecipeClick(){
-    var recipeName = document.getElementById('recipeName').value;
-    console.log(recipeName);
-    var recipeInstructions = document.getElementById('recipeInstructions').value;
-    console.log(recipeInstructions);
-    var totalCalories = document.getElementById('calorieIntake').value;
-    console.log(totalCalories);
-    var ingredientsNames = document.getElementsByClassName('ingredientNames');
-    var ingredientsNumber = document.getElementsByClassName('ingredientNumber');
-    
-    for(var i=0, j=0; i < ingredientsNames.length, j < ingredientsNumber.length; i++, j++){
-        var combineNameNumber = ingredientsNames[i].value.concat.ingredientsNumber[j].value;
-        console.log(combineNameNumber);
-        
-    }    
 }
 
     
