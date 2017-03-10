@@ -65,6 +65,7 @@ header #logo {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 5px 5px 5px #888888;
+    padding-bottom: 10px;
 }
 
 footer {
@@ -79,4 +80,31 @@ footer {
     margin-left: 250px;
     margin-right: 250px;
     
+}
+
+.recipeDiv{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.recipeName{
+    font-size: 25px;
+    padding: 5px;
+}
+
+.recipeInstructions{
+    font-size: 15px;
+    padding: 5px;
+}
+
+.recipeCalorie{
+    font-size: 15px;
+    padding: 5px;
+}
+
+.recipeIngredient{
+    font-size: 15px;
+    padding: 5px;
 }
