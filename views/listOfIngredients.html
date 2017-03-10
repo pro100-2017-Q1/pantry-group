@@ -35,13 +35,13 @@
                     <br/>
                     
                     <p class="pageHeader">Ingredient List</p>
-                    <form class="form-horizontal">
+                    <form name="ingredientForm" method="GET" action="" class="form-horizontal" onsubmit="return validateIngredient()">
                             <div class="form-group">
                                     <div class="col-sm-2">
                                         
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="ingredientAdded" placeholder="Ingredient being added">
+                                        <input type="text" class="form-control" id="ingredientAdded" name="ingredientAdded" placeholder="Ingredient being added">
                                     </div>
                                     <div class="col-sm-2">
                                         
@@ -50,13 +50,14 @@
                                         <input type="text" class="form-control" id="ingredientFilter" placeholder="Enter name of desired ingredient" oninput="filterIngredients()">
                                     </div>
                             </div>
-                    </form>
+                    
                     <div class="col-sm-2">
                                         
                     </div>
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-default" id="ingredientAddedButton" onclick="pantry.addIngredient()">Add</button>
+                        <input type="submit" class="btn btn-default" id="ingredientAddedButton" value="Add">
                     </div>
+                    </form>
                     <br/>
                     <br/>
                     <br/>
