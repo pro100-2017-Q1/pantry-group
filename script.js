@@ -1,43 +1,103 @@
 // potato
 var pantry = {
-    ingredients : [],
-    addIngredient : function(isNew){
+    ingredients: [],
+    addIngredient: function (isNew) {
         var name = document.getElementById("ingredientAdded").value;
-        if(isNew){
-        this.ingredients.push(new Ingredient());
-        console.log(pantry);
-        
+        if (isNew) {
+            this.ingredients.push(new Ingredient());
+            console.log(pantry);
+
+            var newItemDiv = document.createElement("div");
+            newItemDiv.className = "form-group";
+
+            var emptyDiv = document.createElement("div");
+            emptyDiv.className = "col-sm-3";
+
+            var itemName = document.createElement("div");
+            itemName.innerHTML = name;
+            itemName.className = "col-sm-3";
+            itemName.id = name + "Div";
+
+            var minusButton = document.createElement("button");
+            minusButton.className = "col-sm-1";
+            minusButton.innerHTML = "-";
+            minusButton.type = "submit";
+            minusButton.onclick = decrementIngredientAmount;
+            minusButton.id = name;
+
+            var itemCount = document.createElement("p");
+            itemCount.style = "text-align: center";
+            itemCount.className = "col-sm-1";
+            itemCount.id = name + "Quantity";
+            itemCount.innerHTML = 1;
+
+            var addButton = document.createElement("button");
+            addButton.className = "col-sm-1";
+            addButton.innerHTML = "+";
+            addButton.type = "submit";
+            addButton.onclick = incrementIngredientAmount;
+            addButton.id = name;
+
+            var secondEmptyDiv = document.createElement("div");
+            secondEmptyDiv.className = "col-sm-3";
+
+            document.getElementById("ingredientList").appendChild(newItemDiv);
+            newItemDiv.appendChild(emptyDiv);
+            newItemDiv.appendChild(itemName);
+            newItemDiv.appendChild(minusButton);
+            newItemDiv.appendChild(itemCount);
+            newItemDiv.appendChild(addButton);
+            newItemDiv.appendChild(secondEmptyDiv);
+        } else {
+            var currentIngredient = findIngredient(name);
+            currentIngredient.count++;
+            document.getElementById(name + "Quantity").innerHTML = currentIngredient.count;
+        }
+    }
+};
+
+console.log(pantry.ingredients);
+
+if (retrieveIngredientsArray() != null) {
+    //console.log(retrieveIngredientsArray());
+    pantry.ingredients = retrieveIngredientsArray();
+}
+function displayIngredients(ingredientArray) {
+    console.log("in display ingredients");
+    for (var index = 0; index < ingredientArray.length; index++) {
+        var item = ingredientArray[index];
+        console.log(item);
         var newItemDiv = document.createElement("div");
         newItemDiv.className = "form-group";
-        
+
         var emptyDiv = document.createElement("div");
         emptyDiv.className = "col-sm-3";
-        
-        var itemName = document.createElement("div"); 
-        itemName.innerHTML = name;
-        itemName.className = "col-sm-3";
-        itemName.id = name + "Div";
 
+        var itemName = document.createElement("div");
+        itemName.innerHTML = item.name;
+        itemName.className = "col-sm-3";
+        itemName.id = item.name + "Div";
+        console.log(itemName);
         var minusButton = document.createElement("button");
         minusButton.className = "col-sm-1";
         minusButton.innerHTML = "-";
         minusButton.type = "submit";
         minusButton.onclick = decrementIngredientAmount;
-        minusButton.id = name;
+        minusButton.id = item.name;
 
         var itemCount = document.createElement("p");
         itemCount.style = "text-align: center";
         itemCount.className = "col-sm-1";
-        itemCount.id = name + "Quantity";
-        itemCount.innerHTML = 1;
+        itemCount.id = item.name + "Quantity";
+        itemCount.innerHTML = item.count;
 
         var addButton = document.createElement("button");
         addButton.className = "col-sm-1";
         addButton.innerHTML = "+";
         addButton.type = "submit";
         addButton.onclick = incrementIngredientAmount;
-        addButton.id = name;
-        
+        addButton.id = item.name;
+
         var secondEmptyDiv = document.createElement("div");
         secondEmptyDiv.className = "col-sm-3";
 
@@ -48,121 +108,61 @@ var pantry = {
         newItemDiv.appendChild(itemCount);
         newItemDiv.appendChild(addButton);
         newItemDiv.appendChild(secondEmptyDiv);
-    }else{
-        var currentIngredient = findIngredient(name);
-        currentIngredient.count++;
-        document.getElementById(name + "Quantity").innerHTML = currentIngredient.count;
     }
-    }
-};
-
-console.log(pantry.ingredients);
-
-if (retrieveIngredientsArray() != null) {
-        //console.log(retrieveIngredientsArray());
-        pantry.ingredients = retrieveIngredientsArray();
-}
-function displayIngredients(ingredientArray){
-        console.log("in display ingredients");
-        for (var index = 0; index < ingredientArray.length; index++) {
-            var item = ingredientArray[index];
-             console.log(item);
-            var newItemDiv = document.createElement("div");
-            newItemDiv.className = "form-group";
-            
-            var emptyDiv = document.createElement("div");
-            emptyDiv.className = "col-sm-3";
-
-            var itemName = document.createElement("div");
-            itemName.innerHTML = item.name;
-            itemName.className = "col-sm-3";
-            itemName.id = item.name + "Div";
-            console.log(itemName);
-            var minusButton = document.createElement("button");
-            minusButton.className = "col-sm-1";
-            minusButton.innerHTML = "-";
-            minusButton.type = "submit";
-            minusButton.onclick = decrementIngredientAmount;
-            minusButton.id = item.name;
-
-            var itemCount = document.createElement("p");
-            itemCount.style = "text-align: center";
-            itemCount.className = "col-sm-1";
-            itemCount.id = item.name + "Quantity";
-            itemCount.innerHTML = item.count;
-
-            var addButton = document.createElement("button");
-            addButton.className = "col-sm-1";
-            addButton.innerHTML = "+";
-            addButton.type = "submit";
-            addButton.onclick = incrementIngredientAmount;
-            addButton.id = item.name;
-            
-            var secondEmptyDiv = document.createElement("div");
-            secondEmptyDiv.className = "col-sm-3";
-
-            document.getElementById("ingredientList").appendChild(newItemDiv);
-            newItemDiv.appendChild(emptyDiv);
-            newItemDiv.appendChild(itemName);
-            newItemDiv.appendChild(minusButton);
-            newItemDiv.appendChild(itemCount);
-            newItemDiv.appendChild(addButton);
-            newItemDiv.appendChild(secondEmptyDiv);   
-    } 
 }
 
 recipesList = {
-    recipes : [],
-  
-    addRecipe : function(){
-        this.recipes.push(new Recipe()); 
-        
+    recipes: [],
+
+    addRecipe: function () {
+        this.recipes.push(new Recipe());
+
     }
 };
 
-if(retrieveRecipes() != null){
+if (retrieveRecipes() != null) {
     recipesList.recipes = retrieveRecipes();
 }
 console.log(recipesList.recipes);
 
 
 var requirementNumber = 1;
-function addIngredientFields(){
-    
+function addIngredientFields() {
+
     var newIngredientDiv = document.createElement("div");
     newIngredientDiv.className = "form-group col-sm-12";
-    newIngredientDiv.id = "requirementDiv"+requirementNumber;
-    
+    newIngredientDiv.id = "requirementDiv" + requirementNumber;
+
     var testDiv = document.createElement("div");
-    
+
     var newRequirementField = document.createElement("input");
     newRequirementField.className = "form-control";
     newRequirementField.type = "text";
-    newRequirementField.id = "requirement"+requirementNumber;
+    newRequirementField.id = "requirement" + requirementNumber;
     newRequirementField.placeholder = "Enter ingredient name";
-    
+
     var test2Div = document.createElement("div");
     test2Div.className = "col-sm-2";
 
     var newRequirementAmount = document.createElement("input");
     newRequirementAmount.className = "form-control col-sm-9";
     newRequirementAmount.type = "number";
-    newRequirementAmount.id = "requiredAmount"+requirementNumber;
+    newRequirementAmount.id = "requiredAmount" + requirementNumber;
     newRequirementAmount.placeholder = "How many";
 
     document.getElementById("requirements").appendChild(newIngredientDiv);
     newIngredientDiv.appendChild(testDiv);
     newIngredientDiv.appendChild(test2Div);
     newIngredientDiv.appendChild(newRequirementField);
-    
-    newIngredientDiv.appendChild(newRequirementAmount);
-    
 
-    requirementNumber++;    
+    newIngredientDiv.appendChild(newRequirementAmount);
+
+
+    requirementNumber++;
 
 }
 
-function displayRecipes(){
+function displayRecipes() {
     for (var index = 0; index < recipesList.recipes.length; index++) {
         var recipe = recipesList.recipes[index];
 
@@ -190,7 +190,7 @@ function displayRecipes(){
         recipeCalorieDiv = document.createElement("div");
         recipeCalorieDiv.id = recipe.name + "Calories";
         recipeCalorieDiv.innerHTML = recipe.totalCalories;
-        
+
         document.getElementById("ListOfRecipes").appendChild(recipeDiv);
         recipeDiv.appendChild(recipeNameDiv);
         recipeDiv.appendChild(recipeCalorieDiv);
@@ -198,13 +198,10 @@ function displayRecipes(){
         recipeDiv.appendChild(recipeInstructionsDiv);
 
     }
-    
-
-
 }
 
-function findIngredientCount(name){
-    if(findIngredient(name) == 0){
+function findIngredientCount(name) {
+    if (findIngredient(name) == 0) {
         return 0;
     } else {
         return findIngredient(name).count;
@@ -212,57 +209,57 @@ function findIngredientCount(name){
 }
 
 var weeklyMealPlan = {
-    recipes : [], 
+    recipes: [],
 
-    addRecipeToPlan : function(){
+    addRecipeToPlan: function () {
         this.recipes.push(new Recipe());
     },
 
-    deleteRecipeFromPlan : function(){
+    deleteRecipeFromPlan: function () {
         this.recipes.splice(recipes.indexOf(name), 1);
     }
 };
 
-function displayRecipesOnCaloriePage(){
+function displayRecipesOnCaloriePage() {
     document.getElementById("recipeDisplay").innerHTML = recipesList;
     console.log(recipesList);
     console.log(weeklyMealPlan);
 }
 
-function handleMealPlanAddClick(){
+function handleMealPlanAddClick() {
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
     weeklyMealPlan.addRecipeToPlan(recipeName);
     console.log(weeklyMealPlan);
 }
 
-function handleMealPlanDeleteClick(){
+function handleMealPlanDeleteClick() {
     var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
     weeklyMealPlan.deleteRecipeFromPlan(recipeName);
     console.log(weeklyMealPlan);
 }
 
-function handleRecipeSaveClick(){
+function handleRecipeSaveClick() {
     // var recipeName = document.getElementById('recipeName').value;
     console.log(recipeName);
     recipesList.addRecipe();
     console.log(recipesList);
     for (var index = 1; index < requirementNumber; index++) {
-        document.getElementById("requirements").removeChild(document.getElementById("requirementDiv"+index));
+        document.getElementById("requirements").removeChild(document.getElementById("requirementDiv" + index));
     }
-    requirementNumber=1;
+    requirementNumber = 1;
     storeRecipes();
 }
 
-function handleIngredientAddClick(){
+function handleIngredientAddClick() {
     var name = document.getElementById('ingredientAdded').value;
     console.log(name);
     pantry.addIngredient(name);
     console.log(pantry);
 }
 
-function incrementIngredientAmount(button){
+function incrementIngredientAmount(button) {
     console.log(button)
     ingredientEffected = findIngredient(button.path[0].id);
     console.log(ingredientEffected);
@@ -271,7 +268,7 @@ function incrementIngredientAmount(button){
     document.getElementById(currentName + "Quantity").innerHTML = ingredientEffected.count;
 }
 
-function findIngredient(ingredToFind){
+function findIngredient(ingredToFind) {
     for (var index = 0; index < pantry.ingredients.length; index++) {
         if (pantry.ingredients[index].name == ingredToFind) {
             return pantry.ingredients[index];
@@ -280,119 +277,119 @@ function findIngredient(ingredToFind){
     return 0;
 }
 
-function filterIngredients(){
+function filterIngredients() {
     var filterTerm = document.getElementById("ingredientFilter").value;
     var filteredIngredients = [];
     var listOfIngredients = document.getElementById("ingredientList");
-            for(var i = 0; i < listOfIngredients.childElementCount; i++){
-                listOfIngredients.removeChild(listOfIngredients.childNodes[0])
-                
-            }
-    if(filterTerm == ""){
+    for (var i = 0; i < listOfIngredients.childElementCount; i++) {
+        listOfIngredients.removeChild(listOfIngredients.childNodes[0])
+
+    }
+    if (filterTerm == "") {
         console.log(pantry.ingredients);
-           displayIngredients(pantry.ingredients);
-           
-        }
-        else{
-            console.log(filterIngredients);
-            for (var index = 0; index < pantry.ingredients.length; index++) {
-                if (pantry.ingredients[index].name.toLowerCase() == filterTerm.toLowerCase() || pantry.ingredients[index].name.toLowerCase().startsWith(filterTerm.toLowerCase())) {
+        displayIngredients(pantry.ingredients);
+
+    }
+    else {
+        console.log(filterIngredients);
+        for (var index = 0; index < pantry.ingredients.length; index++) {
+            if (pantry.ingredients[index].name.toLowerCase() == filterTerm.toLowerCase() || pantry.ingredients[index].name.toLowerCase().startsWith(filterTerm.toLowerCase())) {
                 console.log(pantry.ingredients[index].name);
                 filteredIngredients.push(pantry.ingredients[index]);
                 console.log("boop3");
                 console.log(pantry.ingredients[index]);
-                }
-             }
-            console.log(filteredIngredients);
-            displayIngredients(filteredIngredients);
-            
-                }
+            }
+        }
+        console.log(filteredIngredients);
+        displayIngredients(filteredIngredients);
+
+    }
 }
 
-function decrementIngredientAmount(button){
+function decrementIngredientAmount(button) {
     ingredientEffected = findIngredient(button.path[0].id);
     console.log(ingredientEffected);
-    if(ingredientEffected.count > 0){
+    if (ingredientEffected.count > 0) {
         ingredientEffected.count--;
     }
-    if(ingredientEffected.count <= 0){
+    if (ingredientEffected.count <= 0) {
         console.log(pantry.ingredients[pantry.ingredients.indexOf(ingredientEffected)])
-        pantry.ingredients.splice(pantry.ingredients.indexOf(ingredientEffected),1);
+        pantry.ingredients.splice(pantry.ingredients.indexOf(ingredientEffected), 1);
         location.reload();
     }
     document.getElementById(ingredientEffected.name + "Quantity").innerHTML = ingredientEffected.count;
 }
 
-function Ingredient(){
+function Ingredient() {
     //String name of ingredient
     this.name = document.getElementById("ingredientAdded").value;
     //Number of available units for this ingredient
     this.count = 1;
 }
 
-function Requirement(name, count){
+function Requirement(name, count) {
     //String name of ingredient
     this.name = name;
     //Number of available units for this ingredient
     this.count = count;
 }
 
-function Recipe(){
+function Recipe() {
     //String name of recipe
     this.name = document.getElementById('recipeName').value;
     //Array of ingredient objects with names and required amounts
     requirements = [];
     for (var index = 0; index < requirementNumber; index++) {
-        requirements.push(new Requirement(document.getElementById("requirement"+index).value, document.getElementById("requiredAmount"+index).value));
+        requirements.push(new Requirement(document.getElementById("requirement" + index).value, document.getElementById("requiredAmount" + index).value));
     }
     this.requiredIngredients = requirements;
     //array of strings
     this.instructions = document.getElementById('recipeInstructions').value;
-        
+
     this.totalCalories = document.getElementById('calorieIntake').value
 }
 
-function storeRecipes(){
+function storeRecipes() {
     localStorage.setItem('recipeObject', JSON.stringify(recipesList.recipes));
 }
 
-function retrieveRecipes(){
+function retrieveRecipes() {
     var retrievedRecipeObject = JSON.parse(localStorage.getItem('recipeObject'));
     return retrievedRecipeObject;
 }
 
-function storeIngredientsArray(){
+function storeIngredientsArray() {
     localStorage.setItem('ingredients', JSON.stringify(pantry.ingredients));
-    
+
 }
 
-function retrieveIngredientsArray(){
+function retrieveIngredientsArray() {
     var ingredients = JSON.parse(localStorage.getItem('ingredients'));
     return ingredients;
 }
 
-function validateForm(){
+function validateForm() {
     var x = document.forms["recipeForm"]["recipeName"].value;
-    if(x == ""){
+    if (x == "") {
         alert("Recipe has no name");
         return false;
-    }else{
+    } else {
         handleRecipeSaveClick();
     }
 }
 
-function validateIngredient(){
+function validateIngredient() {
     var x = document.forms["ingredientForm"]["ingredientAdded"].value;
     var addNew = true;
-    for(var i = 0; i < pantry.ingredients.length; i++){
-        if(x == pantry.ingredients[i].name){
+    for (var i = 0; i < pantry.ingredients.length; i++) {
+        if (x == pantry.ingredients[i].name) {
             addNew = false;
             break;
-        }else{
+        } else {
             addNew = true;
         }
     }
     pantry.addIngredient(addNew);
 }
 
-    
+
