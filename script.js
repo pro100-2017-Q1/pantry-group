@@ -391,6 +391,7 @@ function storeIngredientsArray() {
 
 }
 
+function retrieveIngredientsArray(){
     var ingredients = JSON.parse(localStorage.getItem('ingredients'));
     return ingredients;
 }
