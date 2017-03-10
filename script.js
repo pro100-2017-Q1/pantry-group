@@ -175,11 +175,11 @@ function displayRecipes(){
 
         recipeRequirements = document.createElement("ul");
         recipeRequirements.id = recipe.name + "Requirements";
-        for (var index = 0; index < recipe.requiredIngredients.length; index++) {
-            var item = recipe.requiredIngredients[index];
+        for (var i = 0; i < recipe.requiredIngredients.length; i++) {
+            var item = recipe.requiredIngredients[i];
             requirementDiv = document.createElement("li");
             requirementDiv.id = item.name + "div";
-            requirementDiv.innerHTML = item.name + ": " + findIngredient(item.name).count + " / " + item.count;
+            requirementDiv.innerHTML = item.name + ": " + findIngredientCount(item.name) + " / " + item.count;
             recipeRequirements.appendChild(requirementDiv);
         }
 
@@ -190,8 +190,6 @@ function displayRecipes(){
         recipeCalorieDiv = document.createElement("div");
         recipeCalorieDiv.id = recipe.name + "Calories";
         recipeCalorieDiv.innerHTML = recipe.totalCalories;
-
-
         
         document.getElementById("ListOfRecipes").appendChild(recipeDiv);
         recipeDiv.appendChild(recipeNameDiv);
@@ -203,6 +201,14 @@ function displayRecipes(){
     
 
 
+}
+
+function findIngredientCount(name){
+    if(findIngredient(name) == 0){
+        return 0;
+    } else {
+        return findIngredient(name).count;
+    }
 }
 
 var weeklyMealPlan = {
@@ -271,7 +277,7 @@ function findIngredient(ingredToFind){
             return pantry.ingredients[index];
         }
     }
-    return 
+    return 0;
 }
 
 function filterIngredients(){
