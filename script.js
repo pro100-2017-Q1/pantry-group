@@ -224,7 +224,7 @@ function displayRecipesOnCaloriePage(){
 
 function handleMealPlanAddClick(){
     var recipeName = document.getElementById('recipeName').value;
-    console.log(recipeName);
+    console.log("Recipe Name: " + recipeName);
     weeklyMealPlan.addRecipeToPlan(recipeName);
     console.log(weeklyMealPlan);
 }

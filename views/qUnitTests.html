@@ -7,10 +7,18 @@
     <body>
         <div id="qunit"></div>
         <div id="qunit-fixture">
+            <input type="text" id="recipeName" placeholder="Enter Recipe Name" value="Recipe 1">
+            <input type="text" id="recipeInstructions" placeholder="Enter Recipe Instructions" value="Recipe Instructions">
+            <input type="number" id="calorieIntake" placeholder="Enter total calories" value="0">
+            <input type="text"  id="requirement0" placeholder="Enter ingredient name" value="Carrot">
+            <input type="number" id="requiredAmount0"  placeholder="How many" value="1">
+            <input type="text" id="ingredientAdded" value="Apple">
             <div id="addedIngredient"></div>
+            <div id="ingredientList"></div>
             <div id="requirements"></div>
             <div id="ingredientQuantity"></div>
             <div id="ListOfRecipes"></div>
+            <div id="recipeDisplay"></div>
             <img id="PreviewImageID" style="max-width:400px;" src="#" alt="your image"/>
             <input type="file" onchange="PreviewImage(event)" />
         </div>
