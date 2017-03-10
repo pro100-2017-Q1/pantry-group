@@ -11,3 +11,14 @@ QUnit.test("Add Ingredient Test", function(assert){
 //     var newHtml = document.getElementById('PreviewImageID').innerHTML;
 //     assert.notEqual(oldHtml,newHtml);
 // });
+QUnit.test("Get Ingredient Test", function(assert){
+    assert.ok(findIngredient("Apple"), "Item found");
+    assert.notOk(findIngredient("Carrot"), "Item not found");
+});
+
+QUnit.test("Display Recipe Test", function(assert){
+    var oldHtml = document.getElementById('ListOfRecipes').innerHTML;
+    displayRecipes();
+    var newHtml = document.getElementById('ListOfRecipes').innerHTML;
+    assert.notEqual(oldHtml, newHtml);
+});
