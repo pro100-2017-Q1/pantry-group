@@ -1,3 +1,4 @@
+// potato
 var pantry = {
     ingredients : [],
     addIngredient : function(){
