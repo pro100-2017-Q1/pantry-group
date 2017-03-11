@@ -281,7 +281,8 @@ function filterIngredients() {
     var filterTerm = document.getElementById("ingredientFilter").value;
     var filteredIngredients = [];
     var listOfIngredients = document.getElementById("ingredientList");
-    for (var i = 0; i < listOfIngredients.childElementCount; i++) {
+    var count = listOfIngredients.childNodes.length;
+    for (var i = 0; i < count; i++) {
         listOfIngredients.removeChild(listOfIngredients.childNodes[0])
 
     }
