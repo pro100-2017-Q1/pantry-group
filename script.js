@@ -167,35 +167,41 @@ function displayRecipes() {
         var recipe = recipesList.recipes[index];
 
         recipeDiv = document.createElement("div");
+        recipeDiv.setAttribute("class", "recipeDiv");
         recipeDiv.id = recipe.name + "div";
 
         recipeNameDiv = document.createElement("div");
         recipeNameDiv.id = recipe.name;
-        recipeNameDiv.innerHTML = recipe.name;
+        recipeNameDiv.setAttribute("class", "recipeName");
+        recipeNameDiv.innerHTML = recipe.name + "<br />";
 
         recipeRequirements = document.createElement("ul");
         recipeRequirements.id = recipe.name + "Requirements";
+        recipeRequirements.setAttribute("class", "recipeIngredient");
         for (var i = 0; i < recipe.requiredIngredients.length; i++) {
             var item = recipe.requiredIngredients[i];
             requirementDiv = document.createElement("li");
             requirementDiv.id = item.name + "div";
-            requirementDiv.innerHTML = item.name + ": " + findIngredientCount(item.name) + " / " + item.count;
+            requirementDiv.innerHTML = "Ingredients: " + "<br />" + item.name + ": " + findIngredient(item.name).count + " / " + item.count + "<br />";
             recipeRequirements.appendChild(requirementDiv);
         }
 
         recipeInstructionsDiv = document.createElement("div");
         recipeInstructionsDiv.id = recipe.name + "Instructions";
-        recipeInstructionsDiv.innerHTML = recipe.instructions;
+        recipeInstructionsDiv.setAttribute("class", "recipeInstructions");
+        recipeInstructionsDiv.innerHTML = "Instructions: " + "<br />" + recipe.instructions + "<br />";
 
         recipeCalorieDiv = document.createElement("div");
         recipeCalorieDiv.id = recipe.name + "Calories";
-        recipeCalorieDiv.innerHTML = recipe.totalCalories;
+        recipeCalorieDiv.setAttribute("class", "recipeCalorie");
+        recipeCalorieDiv.innerHTML = "Calories: " + "<br />" + recipe.totalCalories + "<br />";
+
 
         document.getElementById("ListOfRecipes").appendChild(recipeDiv);
         recipeDiv.appendChild(recipeNameDiv);
+        recipeDiv.appendChild(recipeInstructionsDiv);
         recipeDiv.appendChild(recipeCalorieDiv);
         recipeDiv.appendChild(recipeRequirements);
-        recipeDiv.appendChild(recipeInstructionsDiv);
 
     }
 }
