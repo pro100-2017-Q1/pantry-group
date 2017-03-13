@@ -227,7 +227,42 @@ var weeklyMealPlan = {
 };
 
 function displayRecipesOnCaloriePage() {
-    document.getElementById("recipeDisplay").innerHTML = recipesList;
+    for (var index = 0; index < recipesList.recipes.length; index++) {
+        var recipe = recipesList.recipes[index];
+        recipeDiv = document.createElement("div");
+        recipeDiv.setAttribute("class", "recipeDiv");
+        recipeDiv.id = recipe.name + "div";
+
+        recipeNameDiv = document.createElement("div");
+        recipeNameDiv.id = recipe.name;
+        recipeNameDiv.setAttribute("class", "recipeName");
+        recipeNameDiv.innerHTML = recipe.name + "<br />";
+
+        recipeCalorieDiv = document.createElement("div");
+        recipeCalorieDiv.id = recipe.name + "Calories";
+        recipeCalorieDiv.setAttribute("class", "recipeCalorie");
+        recipeCalorieDiv.innerHTML = "Calories: " + "<br />" + recipe.totalCalories + "<br />";
+
+        addButton = document.createElement("input");
+        addButton.type = "button";
+        addButton.onclick = handleMealPlanAddClick;
+        addButton.innerHTML = "add";
+        addButton.id = "addButton"+index;
+
+        minusButton = document.createElement("input");
+        minusButton.type = "button";
+        minusButton.innerHTML = "remove";
+        minusButton.onclick = handleMealPlanDeleteClick;
+        minusButton.id = "minusButton"+index;
+
+        document.getElementById("recipeDisplay").appendChild(recipeDiv);
+        recipeDiv.appendChild(recipeNameDiv);
+        recipeDiv.appendChild(recipeCalorieDiv);
+        recipeDiv.appendChild(addButton);
+        recipeDiv.appendChild(minusButton);
+
+    }
+
     console.log(recipesList);
     console.log(weeklyMealPlan);
 }
