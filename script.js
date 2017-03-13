@@ -2,8 +2,11 @@
 var pantry = {
     ingredients: [],
     addIngredient: function (isNew) {
-        var name = document.getElementById("ingredientAdded").value;
+        var name = document.getElementById("ingredientAdded").value.toProperCase();
+        
         if (isNew) {
+            name = name.toProperCase();
+            //alert(name);
             this.ingredients.push(new Ingredient());
             console.log(pantry);
 
@@ -49,6 +52,7 @@ var pantry = {
             newItemDiv.appendChild(addButton);
             newItemDiv.appendChild(secondEmptyDiv);
         } else {
+            name = name.toProperCase();
             var currentIngredient = findIngredient(name);
             currentIngredient.count++;
             document.getElementById(name + "Quantity").innerHTML = currentIngredient.count;
@@ -329,7 +333,7 @@ function decrementIngredientAmount(button) {
 
 function Ingredient() {
     //String name of ingredient
-    this.name = document.getElementById("ingredientAdded").value;
+    this.name = document.getElementById("ingredientAdded").value.toProperCase();
     //Number of available units for this ingredient
     this.count = 1;
 }
@@ -376,7 +380,7 @@ function retrieveIngredientsArray() {
 }
 
 function validateForm() {
-    var x = document.forms["recipeForm"]["recipeName"].value;
+    var x = document.forms["recipeForm"]["recipeName"].value.toProperCase();
     if (x == "") {
         alert("Recipe has no name");
         return false;
@@ -385,8 +389,13 @@ function validateForm() {
     }
 }
 
+String.prototype.toProperCase = function () {
+    return this.replace(/\w*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
+
 function validateIngredient() {
     var x = document.forms["ingredientForm"]["ingredientAdded"].value;
+    x = x.toProperCase();
     var addNew = true;
     for (var i = 0; i < pantry.ingredients.length; i++) {
         if (x == pantry.ingredients[i].name) {
