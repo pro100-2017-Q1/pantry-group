@@ -244,18 +244,20 @@ function displayRecipesOnCaloriePage() {
         recipeCalorieDiv.innerHTML = "Calories: " + "<br />" + recipe.totalCalories + "<br />";
 
         addButton = document.createElement("input");
+        addButton.setAttribute("class", "addButton");
+        addButton.value = "Add";
         addButton.type = "button";
         addButton.onclick = handleMealPlanAddClick;
-        addButton.innerHTML = "add";
         addButton.id = "addButton"+index;
 
         minusButton = document.createElement("input");
+        minusButton.setAttribute("class", "minusButton");
         minusButton.type = "button";
-        minusButton.innerHTML = "remove";
+        minusButton.value = "Del";
         minusButton.onclick = handleMealPlanDeleteClick;
         minusButton.id = "minusButton"+index;
 
-        document.getElementById("recipeDisplay").appendChild(recipeDiv);
+        document.getElementById("ListOfCalorieRecipes").appendChild(recipeDiv);
         recipeDiv.appendChild(recipeNameDiv);
         recipeDiv.appendChild(recipeCalorieDiv);
         recipeDiv.appendChild(addButton);
@@ -266,6 +268,8 @@ function displayRecipesOnCaloriePage() {
     console.log(recipesList);
     console.log(weeklyMealPlan);
 }
+
+
 
 function handleMealPlanAddClick() {
     var recipeName = document.getElementById('recipeName').value;
@@ -388,7 +392,7 @@ function Recipe() {
     //array of strings
     this.instructions = document.getElementById('recipeInstructions').value;
 
-    this.totalCalories = document.getElementById('calorieIntake').value
+    this.totalCalories = document.getElementById('calorieIntake').value;
 }
 
 function storeRecipes() {
@@ -433,5 +437,67 @@ function validateIngredient() {
     }
     pantry.addIngredient(addNew);
 }
+
+function updateCalorieCount(){
+    var userInputCalorie = document.getElementById('calorieIntake').value;
+    document.getElementById('calorieCounter').value = userInputCalorie;
+    calorieDiv.innerHTML=userInputCalorie;
+    
+}
+
+function calculateWeeklyCalories(){
+    var caloriesInMealPlan = document.getElementById('calorieCounter').value;
+    var totalCaloriesFromMealsInPlan = 0;
+    for (var index = 0; index < recipesList.recipes.length; index++) {
+        var recipe = weeklyMealPlan.recipes[index];
+        totalCaloriesFromMealsInPlan += recipe.totalCalories;
+        
+    }
+    if(caloriesInMealPlan < totalCaloriesFromMealsInPlan){
+        newFunctionToDisplayRecipes();
+    }
+}
+
+function newFunctionToDisplayRecipes(){
+    for (var index = 0; index < weeklyMealPlan.recipes.length; index++) {
+        var recipe = recipesList.recipes[index];
+        recipeDiv = document.createElement("div");
+        recipeDiv.setAttribute("class", "recipeDiv");
+        recipeDiv.id = recipe.name + "div";
+
+        recipeNameDiv = document.createElement("div");
+        recipeNameDiv.id = recipe.name;
+        recipeNameDiv.setAttribute("class", "recipeName");
+        recipeNameDiv.innerHTML = recipe.name + "<br />";
+
+        recipeCalorieDiv = document.createElement("div");
+        recipeCalorieDiv.id = recipe.name + "Calories";
+        recipeCalorieDiv.setAttribute("class", "recipeCalorie");
+        recipeCalorieDiv.innerHTML = "Calories: " + "<br />" + recipe.totalCalories + "<br />";
+
+        addButton = document.createElement("input");
+        addButton.setAttribute("class", "addButton");
+        addButton.value = "Add";
+        addButton.type = "button";
+        addButton.onclick = handleMealPlanAddClick;
+        addButton.id = "addButton"+index;
+
+        minusButton = document.createElement("input");
+        minusButton.setAttribute("class", "minusButton");
+        minusButton.type = "button";
+        minusButton.value = "Del";
+        minusButton.onclick = handleMealPlanDeleteClick;
+        minusButton.id = "minusButton"+index;
+
+        document.getElementById("ListOfCalorieRecipes").appendChild(recipeDiv);
+        recipeDiv.appendChild(recipeNameDiv);
+        recipeDiv.appendChild(recipeCalorieDiv);
+        recipeDiv.appendChild(addButton);
+        recipeDiv.appendChild(minusButton);
+
+    }
+}
+
+
 
 
