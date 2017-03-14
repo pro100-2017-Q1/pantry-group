@@ -119,3 +119,13 @@ footer {
     font-size: 15px;
     padding: 5px;
 }
+
+.addButton {
+    color: black;
+    width: 50px;
+    margin-right: 5px;
+}
+.minusButton {
+    color: black;
+    width: 50px;
+}
